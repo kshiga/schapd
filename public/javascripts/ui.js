@@ -7,6 +7,8 @@
         windowHeight = window.innerHeight,
         canvasX = 0,
         canvasY = 0,
+        cursorX = 0,
+        cursorY = 0,
         canvas = document.getElementById("canvas"),
         renderingContext = canvas.getContext("2d");
 
@@ -56,11 +58,23 @@
         var offsetX = 0,
             offsetY = 0;
             
-         offsetX = canvas.offsetLeft - canvas.scrollLeft;
-         offsetY = canvas.offsetTop - canvas.scrollTop;
+        offsetX = canvas.offsetLeft - canvas.scrollLeft;
+        offsetY = canvas.offsetTop - canvas.scrollTop;
 
-         canvasX = e.pageX - offsetX;
-         canvasY = e.pageY - offsetY;
+        canvasX = e.pageX - offsetX;
+        canvasY = e.pageY - offsetY;
+        console.log("canvas x: " + canvasX + "\n canvas y: " + canvasY);
+    })
+
+    $("#canvas").mousemove(function(e){
+        var offsetX = 0,
+            offsetY = 0;
+            
+        offsetX = canvas.offsetLeft - canvas.scrollLeft;
+        offsetY = canvas.offsetTop - canvas.scrollTop;
+
+        cursorX = e.pageX - offsetX;
+        cursorY = e.pageY - offsetY;
     })
     
     $("#triangle").click(function(){
@@ -73,11 +87,36 @@
               Draw.triangle(renderingContext, vertices);
               count--;
             } else {
-              vertices = 0;
-              count = 3;
+              return;
+              console.log("burn the sacrificial lamb");
             }
         });
-    });
+    })
+
+    $("#circle").click(function(){
+        var center = [],
+            radius = 0,
+            dragging = false;
+        $("#canvas").mousedown(function(){
+            dragging = true;
+            center = [canvasX, canvasY];
+            console.log("center x: "+ center[0] + "\n center y: " + center[1]);
+            $("#canvas").mousemove(function(){
+                if((cursorX != center[0]) || (cursorY != center[1])){
+                   radius = Draw.getRadius(cursorX, cursorY, center); 
+                   console.log("center x: "+ center[0] + "\n center y: " + center[1]);
+                   console.log("cursor x: " + canvasX + "\n cursor y: " + canvasY);
+                   console.log("radius: " + radius);
+            //       Draw.trackCircle(renderingContext, center, radius);
+                 }   
+            })
+            
+        })
+        $("#canvas").mouseup(function(){
+            dragging = false;
+            //Draw.completeCircle();
+        })
+    })
 
 
 

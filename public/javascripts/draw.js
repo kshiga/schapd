@@ -64,48 +64,49 @@
         toggleClass(menuLink, active);
     })
 
-    
-    $("#triangle").click(function(){
-        var vertices = [],
-            count = 3;
-        $("#canvas").click(function(){
-            if(count > 0){
-              getXY();
-              vertices.push(canvasX);
-              vertices.push(canvasY);
-              Draw.triangle(renderingContext, vertices);
-              count--;
-            } else {
-              return;
-              console.log("burn the sacrificial lamb");
-            }
-        });
-    })
 
-    // $("#circle").click(function(){
-    //     var center = [],
-    //         completed = false;
-    //         radius = 0;
-    //         getXY();
-    //     $("#canvas").mousedown(function(){
-    //         console.log("mousedown!");
-    //         center = [canvasX, canvasY];            
-    //          $("#canvas").mousemove(function(){
-    //              if(((cursorX != center[0]) || (cursorY != center[1])) && !completed){
-    //                 console.log(completed + "(should be false)");
-    //                 console.log("mdcenter x: "+ center[0] + "\n mdcenter y: " + center[1]);
-    //                 radius = Draw.getRadius(cursorX, cursorY, center); 
-    //                 console.log("mdradius: " + radius);
-    //         //        Draw.trackCircle(renderingContext, center, radius);
-    //               }   
-    //          })    
+    
+    // $("#triangle").click(function(){
+    //     var vertices = [],
+    //         count = 3;
+    //     $("#canvas").click(function(){
+    //         if(count > 0){
+    //           getXY();
+    //           vertices.push(canvasX);
+    //           vertices.push(canvasY);
+    //           Draw.triangle(renderingContext, vertices);
+    //           count--;
+    //         } else {
+    //           return;
+    //           console.log("burn the sacrificial lamb");
+    //         }
     //     });
-    //     $("#canvas").mouseup(function(){
-    //         Draw.drawCircle(renderingContext, center, radius);
-    //         console.log("mouseup!");  
-    //         completed = true;
-    //     });
-    // });
+    // })
+
+    // // $("#circle").click(function(){
+    // //     var center = [],
+    // //         completed = false;
+    // //         radius = 0;
+    // //         getXY();
+    // //     $("#canvas").mousedown(function(){
+    // //         console.log("mousedown!");
+    // //         center = [canvasX, canvasY];            
+    // //          $("#canvas").mousemove(function(){
+    // //              if(((cursorX != center[0]) || (cursorY != center[1])) && !completed){
+    // //                 console.log(completed + "(should be false)");
+    // //                 console.log("mdcenter x: "+ center[0] + "\n mdcenter y: " + center[1]);
+    // //                 radius = Draw.getRadius(cursorX, cursorY, center); 
+    // //                 console.log("mdradius: " + radius);
+    // //         //        Draw.trackCircle(renderingContext, center, radius);
+    // //               }   
+    // //          })    
+    // //     });
+    // //     $("#canvas").mouseup(function(){
+    // //         Draw.drawCircle(renderingContext, center, radius);
+    // //         console.log("mouseup!");  
+    // //         completed = true;
+    // //     });
+    // // });
 
 
 

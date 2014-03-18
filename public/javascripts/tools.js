@@ -50,10 +50,6 @@ var Tools = {
 
     },
 
-    intersection: function(edge1, edge2){
-        
-
-    },
 
     clip: function(shape1, shape2){
 
@@ -62,6 +58,7 @@ var Tools = {
 
     },
     join: function(shape1, shape2){
+
 
     },
     move: function(shape, dx, dy){
@@ -103,10 +100,7 @@ var Tools = {
         if(index > -1){
             shapesArray.splice(index, 1);
         }
-    },
-    cursor: function(e){
-        
-    }
+    }  
 }
 
 module.exports = Tools

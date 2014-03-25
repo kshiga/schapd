@@ -8,6 +8,8 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var pg = require('pg').native;
+var connectionString = process.env.DATABASE_URL || 'postgres://localhost:3000/users'
 
 var app = express();
 

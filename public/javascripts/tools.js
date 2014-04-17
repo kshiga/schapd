@@ -58,9 +58,9 @@ var Tools = {
 
     },
     join: function(shape1, shape2){
-
-
+        
     },
+
     move: function(shape, dx, dy){
         if(shape.type = "circle"){
             shape.center[0] = shape.center[0] + dx;

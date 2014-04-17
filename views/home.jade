@@ -3,57 +3,56 @@ extends layout
 block content
   link(rel='stylesheet', href='/stylesheets/home.css')
 
-  div(class='header')
-      div(class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed")
-          a(class="pure-menu-heading", href="") Your Site
-          ul
-              li(class="pure-menu-selected"): a(href="#") Home
-              li: a(href="#") Tour
-              li: a(href="#") Sign Up
 
   div(class="splash-container")
       div(class="splash")
-          h1(class="splash-head") Big Bold Text
-          p(class="splash-subhead") Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          p: a(href="http://purecss.io", class="pure-button pure-button-primary") Get Started
+          h1(class="splash-head") Schāpd
+          p(class="splash-subhead") Creativity for all.
+          p: a(href="/login", class="pure-button pure-button-primary") Get Started
           
   div(class="content-wrapper")
       div(class="content")
-          h2(class="content-head is-center") Excepteur sint occaecat cupidatat.
+          h2(class="content-head is-center") What is Schāpd?
 
           div(class="pure-g")
-              div(class="l-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-4")
+              div(class="l-box  pure-u-1-4")
 
-                  h3(class="content-subhead") Get Started Quickly
-                  p Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-              div(class="l-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-4")
+                  h3(class="content-subhead") The Motivation.
+                  p. 
+                    For every art class that ever said you weren't creative 
+                    because you couldn't draw a perfect circle or whatever, 
+                    Schāpd is here. Schāpd aims to help everyone explore their
+                    creativity, because everyone is creative.
+              div(class="l-box pure-u-1-4")
 
-                  h3(class="content-subhead") Get Started Quickly
-                  p Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-              div(class="l-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-4")
-
-                  h3(class="content-subhead") Get Started Quickly
-                  p Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-              div(class="l-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-4")
-
-                  h3(class="content-subhead") Get Started Quickly
-                  p Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+              div(class="l-box  pure-u-1-4")
+                  h3(class="content-subhead") The Concept.
+                  p.
+                    In Schāpd, all illustration is shape based. (Hence "schāpd")
+                    Using only two basic shapes and a few different methods 
+                    for combining them, Schāpd looks to redesign your outlook
+                    on illustration.  Line art is a thing of the past.  
 
       div(class="ribbon l-box-lrg pure-g")
-          div(class="l-box-lrg is-center pure-u-1 pure-u-med-1-2 pure-u-lrg-2-5")
+          div(class="l-box-lrg is-center pure-u-1-5 ")
               p something
-          div(class="pure-u-1 pure-u-med-1-2 pure-u-lrg-3-5")
+          div(class="pure-u-1 pure-u-3-5")
 
-              h2(class="content-head content-head-ribbon") Laboris nisi ut aliquip.
+              h2(class="content-head content-head-ribbon") The Project.
 
-              p sdfsdfs
+              p.
+                Schāpd is a CMSI402 Senior Project completed by Kaitlyn Higa
+                during the Spring 2014 semester. 
+              p.
+                You can fork the project on github and learn more about it here or on the wiki.
 
       div(class="content")
-          h2(class="content-head is-center") Dolore magna aliqua. Uis aute irure.
+          h2(class="content-head is-center") Cool, tell me more.
 
           div(class="pure-g")
-              div(class="l-box-lrg pure-u-1 pure-u-med-2-5")
+              div(class="l-box-lrg pure-u-1-4")
                   form(class="pure-form pure-form-stacked")
+                    p Sign up for email updates!
                       fieldset
 
                           label(for="email") Your Name
@@ -68,17 +67,24 @@ block content
 
                           button(type="submit", class="pure-button") Sign Up
 
-              div(class="l-box-lrg pure-u-1 pure-u-med-3-5")
+              div(class="l-box-lrg pure-u-2-5")
                   h4 Contact Us
-                  p sdfsdf
+                  p Now why would you want to do that?
 
 
                   h4 More Information
-                  p askdfna
+                  p Yes, that would be nice
                       
 
       div(class="footer l-box is-center")
-          View the source of this layout to learn more. Made with love by the YUI Team.
+          p
+            a(href="#") About
+            &nbsp;
+            a(href="#") Git
+            &nbsp;
+            a(href="#") Privacy
+            &nbsp;
+            a(href="#") Feedback
 
 
   script(src="http://yui.yahooapis.com/3.14.1/build/yui/yui.js")

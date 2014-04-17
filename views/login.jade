@@ -1,0 +1,42 @@
+extends layout 
+
+block content
+  link(rel='stylesheet', href='/stylesheets/header.css')
+  script(src='/javascripts/inup.js') 
+  script(src='/javascripts/signup.js') 
+
+
+  div(class="content center-area is-center" )
+    div(class="block")
+        div(id="signup", action="/users/create", method="post")
+            h1 Sign up!
+            form(class="pure-form pure-form-aligned")
+              fieldset
+                div(class="pure-control-group")
+                  label(for="name") Username
+                  input(id="name", type="text", placeholder="Username", name="username")
+                div(class="pure-control-group")
+                  label(for="password") Password
+                  input(id="password", type="password", placeholder="Password")
+                div(class="pure-control-group")
+                  label(for="email") Email
+                  input(id="email", type="text", placeholder="Email")
+               div(class="pure-controls")
+                  label(for="cb", class="pure-checkbox") I've read the terms and conditions &nbsp;
+                     input(id="cb", type="checkbox")
+            button(type="submit", class="pure-button pure-button-primary") Sign up
+             
+
+        //- div(id="signin")
+        //-     h1 Sign in!
+        //-     form(class="pure-form pure-form-aligned")
+        //-       fieldset
+        //-         div(class="pure-control-group")
+        //-           label(for="name") Username
+        //-           input(id="name" type="text" placeholder="Username")
+        //-         div(class="pure-control-group")
+        //-           label(for="password") Password
+        //-           input(id="password" type="password" placeholder="Password")
+        //-     button(type="submit", class="pure-button pure-button-primary button-xlarge") Sign in
+            
+        //-     button(class="pure-button pure-button-primary button-xlarge", id="signupbtn") Sign up

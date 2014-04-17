@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "schapd",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,11 +10,19 @@
     "jade": "*",
     "stylus": "*",
     "mocha": "*",
-    "pg": "*"
+    "pg": "~3.0.3",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "passport-facebook": "~1.0.2",
+    "passport-twitter": "~1.0.2",
+    "passport-google-oauth": "~0.1.5",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs": "latest",
+    "sequelize": "~2.0.0-beta.2",
+    "lodash": "~2.4.1",
   },
-
   "devDependencies": {
-  "chai": "*",
-  "mocha": "*"
+    "chai": "*",
+    "mocha": "*"
   }
 }

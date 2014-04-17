@@ -2,16 +2,16 @@ body
   line-height: 1.7em
   color: #7f8c8d
   font-size: 13px
+  background-color: #C19F60
 
 
 h1,
-h2,
 h3,
 h4,
 h5,
 h6,
 label 
-  color: #34495e
+  color: #342127 !important;
 
 
 .pure-img-responsive 
@@ -29,7 +29,7 @@ label
 
 
 .is-center 
-text-align: center
+  text-align: center
 
 
 
@@ -48,7 +48,7 @@ text-align: center
 
 
 .pure-button 
-  background-color: #1f8dd6
+  background-color: #C7CFB7
   color: white
   padding: 0.5em 2em
   border-radius: 5px
@@ -56,7 +56,7 @@ text-align: center
 
 a.pure-button-primary 
   background: white
-  color: #1f8dd6
+  color: #C7CFB7
   border-radius: 5px
   font-size: 120%
 
@@ -69,7 +69,7 @@ a.pure-button-primary
   box-shadow: 0 1px 1px rgba(0,0,0, 0.10)
 
 .home-menu.pure-menu-open 
-  background: #2d3e50
+  background: #A1956F
 
 .pure-menu.pure-menu-open.pure-menu-fixed 
   border-bottom: none
@@ -88,33 +88,34 @@ a.pure-button-primary
 
 
 .home-menu a 
-  color: #6FBEF3
+  color: #C7CFB7
 
 .home-menu li a:hover,
 .home-menu li a:focus 
   background: none
   border: none
-  color: #AECFE5
+  color: #342127
 
 .splash-container 
-  background: #1f8dd6
+  background: #C7CFB7
   z-index: 1
   overflow: hidden
-
   width: 100%
   height: 88%
   top: 0
   left: 0
-  position: fixed !important
+  position: fixed !important;
 
 
 .splash 
-
   width: 80%
   height: 50%
   margin: auto
   position: absolute
-  top: 100px left: 0 bottom: 0 right: 0
+  top: 100px 
+  left: 0 
+  bottom: 0 
+  right: 0
   text-align: center
   text-transform: uppercase
 
@@ -139,13 +140,12 @@ a.pure-button-primary
 
 
 .content-wrapper 
-
   position: absolute
   top: 87%
   width: 100%
   min-height: 12%
   z-index: 2
-  background: white
+  background: #F5E4C8
 
 
 
@@ -156,23 +156,17 @@ a.pure-button-primary
   letter-spacing: 0.1em
   margin: 2em 0 1em
 
-
-
 .content-head-ribbon 
   color: white
-
-
 
 .content-subhead 
   color: #1f8dd6
 
 .content-subhead i 
-    margin-right: 7px
-
-
+  margin-right: 7px
 
 .ribbon 
-  background: #2d3e50
+  background: #342127
   color: #aaa
 
 
@@ -181,63 +175,63 @@ a.pure-button-primary
   background: #111
 
 
-// /*
-//  * -- TABLET (AND UP) MEDIA QUERIES --
-//  * On tablets and other medium-sized devices, we want to customize some
-//  * of the mobile styles.
-//  */
-// @media (min-width: 48em) 
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 48em) 
 
-//     
-//     body 
-//         font-size: 16px
+    
+    body 
+        font-size: 16px
 
-//     
-//     .content 
-//         padding: 1em
+    
+    .content 
+        padding: 1em
 
 
-//     /* We can align the menu header to the left, but float the
-//     menu items to the right. */
-//     .home-menu 
-//         text-align: left
+    /* We can align the menu header to the left, but float the
+    menu items to the right. */
+    .home-menu 
+        text-align: left
 
-//         .home-menu ul 
-//             float: right
+        .home-menu ul 
+            float: right
     
 
-//     
-//     .splash-container 
-//         height: 500px
+    
+    .splash-container 
+        height: 500px
 
 
-//     /* We decrease the width of the .splash, since we have more width
-//     to work with */
-//     .splash 
-//         width: 50%
-//         height: 50%
+    /* We decrease the width of the .splash, since we have more width
+    to work with */
+    .splash 
+        width: 50%
+        height: 50%
 
 
-//     .splash-head 
-//         font-size: 250%
-
-
-
-//     
-//     .l-box-lrg 
-//         border: none
+    .splash-head 
+        font-size: 250%
 
 
 
+    
+    .l-box-lrg 
+        border: none
 
-// /*
-//  * -- DESKTOP (AND UP) MEDIA QUERIES --
-//  * On desktops and other large devices, we want to over-ride some
-//  * of the mobile and tablet styles.
-//  */
-// @media (min-width: 78em) 
-//     
-//     .splash-head 
-//         font-size: 300%
+
+
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large devices, we want to over-ride some
+ * of the mobile and tablet styles.
+ */
+@media (min-width: 78em) 
+    
+    .splash-head 
+        font-size: 300%
 
 

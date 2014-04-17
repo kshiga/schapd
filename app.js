@@ -4,12 +4,17 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
+var user    = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var pg = require('pg').native;
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:3000/users'
+var pg = require('pg');
+
+
+// var connectionString = process.env.DATABASE_URL || 'postgres://localhost:3000/users'
+// var passport = require('passport');
+// var flash = require('connect-flash');
+var db = require('./models');
+var sequelize = require('sequelize');
 
 var app = express();
 
@@ -22,11 +27,18 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+
 app.use(express.cookieParser());
-//app.use(express.session());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.session({ secret: 'nope' })); 
+
+
+
+
+
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -35,6 +47,18 @@ if ('development' == app.get('env')) {
 
 require('./routes/main')(app);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+ 
+
+
+db
+  .sequelize
+  .sync({ force: true })
+  .complete(function(err) {
+    if (err) {
+      throw err
+    } else {
+      http.createServer(app).listen(app.get('port'), function(){
+        console.log('Express server listening on port ' + app.get('port'))
+      })
+    }
+  })

@@ -2,6 +2,8 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/draw.css')
+  script(src='/javascripts/inup.js') 
+
   div(id='layout')
     a(href='#menu', id='menuLink', class='menu-link')
        span
@@ -11,16 +13,10 @@ block content
             ul
                 li: a(id='triangle', href="#") Triangle
                 li: a(id='circle', href="#") Circle
-                li: a(href='#') Link 3
-                li: a(href='#') Link 4
+                li: a(href='#') Select
+                li: a(href='#') Library
     div(id='main')
-        div(id='schapd-header', class='header')
-            div(class='pure-g')
-                div(class='pure-u-4-5')
-                    h1 Schapd Logo
-                div(class='pure-u-1-5')
-                    h2 account graphic
-        div(class='content')
-            canvas(id='canvas')
+      div(class='content')
+        canvas(id='canvas')
   script(src='/javascripts/shape-draw.js')
   script(src='/javascripts/draw.js')

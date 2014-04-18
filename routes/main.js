@@ -1,6 +1,5 @@
 var db = require('../models');
-
-module.exports = function (app) {
+module.exports = function (app, passport) {
 
  app.get('/', function(req, res){
   res.render('home', {title: 'Home'})
@@ -23,16 +22,22 @@ module.exports = function (app) {
  });
 
  app.get('/login', function(req, res){
-  res.render('login',{title:'login'})
-  
-
+  res.render('login',{title:'login'});
+  res.sendfile('./html/auth.html');
  });
 
-  app.post('/users/create', function(req, res) {
-  db.User.create({ username: req.param('username') }).success(function() {
-    res.redirect('/')
-  })
+app.get('/auth/facebook', passport.authenticate('facebook'));
+ 
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  successRedirect: '/',
+  failureRedirect: '/login'
+}));
+
+app.get("/logout", function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 
-};
+
+ };

@@ -29,9 +29,7 @@ var placeTriangleVertices = function(tool, event, vertices, path){
       tnew.drawTriangle();
     } 
   }
-
 };
-
 
 var regularTriangle = function(tool, event, path){
   tool.onMouseUp = function(event) {
@@ -41,7 +39,7 @@ var regularTriangle = function(tool, event, path){
   });
     obj.fillColor = 'black';
   }
-}
+};
 
 var placeCircle = function(tool, event, path){
   if(event.shiftKey){
@@ -54,26 +52,27 @@ var placeCircle = function(tool, event, path){
    });
     path.fillColor = 'black';
   }
-
- }
+};
 
 var select = function(tool, event, options){
   var path;
   var items = [];
   var movePath = false;
+  var activeGroup = null;
   tool.onMouseDown = function(event, options){
     path = null;
     var hitResult = project.hitTest(event.point, options);
     if(!hitResult){
       return;
     }
-    
+
     if(hitResult){
       path = hitResult.item;
 
       if (event.modifiers.shift) {
         var lastItem = items.pop();
         var intersections = path.getIntersections(lastItem);
+        activeGroup = new Group([lastItem, path])
 
         for (var i = 0; i < intersections.length; i++) {
           new Path.Circle({
@@ -82,11 +81,20 @@ var select = function(tool, event, options){
             fillColor: '#009dec'
           }).removeOnDown();
         }
-
         items.push(lastItem);
-
       } 
+      if(activeGroup){
+        $(window).keypress(function(e){
+          if(e.which == 100){
+            var joined = lastItem.unite(path);
+
+            console.log("joined: " + joined);
+           }
+        });
+        
+      }
       items.push(path);
+
     }
     return items;
     
@@ -100,9 +108,7 @@ var select = function(tool, event, options){
     path.position += event.delta;
   
   }
- }
-
-
+};
 
 var Triangle = function(){
   this.path = new Path();
@@ -120,7 +126,6 @@ Triangle.prototype.drawTriangle = function(){
   return vertices;
 };
 
-
 var Circle = function(){
   this.path = new Path();
   this.cursor = new paper.Tool();
@@ -137,7 +142,7 @@ var Selection = function(){
   this.items = [];
   this.cursor = new paper.Tool();
   this.cursor.activate();
-}
+};
 
 Selection.prototype.getSelection = function(){
   var hitOptions = {
@@ -148,17 +153,13 @@ Selection.prototype.getSelection = function(){
   };
 
  this.items = select(this.cursor, event, hitOptions, this.items);
-
-}
+};
 
 
 $("#triangle").click(function(){
   var t = new Triangle();
   t.drawTriangle();
 });
-
-
-
 
 $("#circle").click(function(){
   var c = new Circle();

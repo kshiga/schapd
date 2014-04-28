@@ -2,12 +2,8 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/draw.css')
-  script(src='/javascripts/inup.js') 
-
 
   div(id='layout')
-    a(href='#menu', id='menuLink', class='menu-link')
-       span
     div(id='menu')
         div(class='pure-menu pure-menu-open')
             a(class='pure-menu-heading', href='#') Tools
@@ -15,13 +11,14 @@ block content
                 li: a(id='triangle', href="#") Triangle
                 li: a(id='circle', href="#") Circle
                 li: a(id='select', href='#') Select
+                li: a(id='join', href='#') Join
+                li: a(id='subtract', href='#') Subtract
+                li: a(id='divide', href='#') Divide
                 li: a(href='#') Library
     div(id='main')
       div(class='content')
         canvas(id='myCanvas', resize="true")
-  //- script(src='/javascripts/shape-draw.js')
 
   script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")
   script(src='/javascripts/inup.js') 
   script(type="text/paperscript", src="/javascripts/paperscript.js", canvas="myCanvas")
-  //- script(src='/javascripts/draw.js')

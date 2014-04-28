@@ -63,39 +63,6 @@ a.pure-button-primary
 
 
 
-.home-menu 
-  padding: 0.5em
-  text-align: center
-  box-shadow: 0 1px 1px rgba(0,0,0, 0.10)
-
-.home-menu.pure-menu-open 
-  background: #A1956F
-
-.pure-menu.pure-menu-open.pure-menu-fixed 
-  border-bottom: none
-
-  z-index: 4
-
-
-.home-menu .pure-menu-heading 
-  color: white
-  font-weight: 400
-  font-size: 120%
-
-
-.home-menu .pure-menu-selected a 
-  color: white
-
-
-.home-menu a 
-  color: #C7CFB7
-
-.home-menu li a:hover,
-.home-menu li a:focus 
-  background: none
-  border: none
-  color: #342127
-
 .splash-container 
   background: #C7CFB7
   z-index: 1
@@ -175,63 +142,30 @@ a.pure-button-primary
   background: #111
 
 
-/*
- * -- TABLET (AND UP) MEDIA QUERIES --
- * On tablets and other medium-sized devices, we want to customize some
- * of the mobile styles.
- */
 @media (min-width: 48em) 
+  body 
+    font-size: 16px
 
-    
-    body 
-        font-size: 16px
-
-    
-    .content 
-        padding: 1em
+  .content 
+    padding: 1em
 
 
-    /* We can align the menu header to the left, but float the
-    menu items to the right. */
-    .home-menu 
-        text-align: left
+  .splash-container 
+    height: 500px
 
-        .home-menu ul 
-            float: right
-    
+  .splash 
+    width: 50%
+    height: 50%
 
-    
-    .splash-container 
-        height: 500px
+  .splash-head 
+    font-size: 250%
 
-
-    /* We decrease the width of the .splash, since we have more width
-    to work with */
-    .splash 
-        width: 50%
-        height: 50%
+  .l-box-lrg 
+    border: none
 
 
-    .splash-head 
-        font-size: 250%
-
-
-
-    
-    .l-box-lrg 
-        border: none
-
-
-
-
-/*
- * -- DESKTOP (AND UP) MEDIA QUERIES --
- * On desktops and other large devices, we want to over-ride some
- * of the mobile and tablet styles.
- */
 @media (min-width: 78em) 
-    
-    .splash-head 
-        font-size: 300%
+  .splash-head 
+    font-size: 300%
 
 

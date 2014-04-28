@@ -2,27 +2,27 @@ var db = require('../models');
 module.exports = function (app, passport) {
 
  app.get('/', function(req, res){
-  res.render('home', {title: 'Home'})
+  res.render('home', {title: 'Home', user: req.user})
  });
 
  app.get('/draw', function(req, res){
-  res.render('draw',{title:'Draw'})
+  res.render('draw',{title:'Draw', user: req.user})
  });
   
  app.get('/about', function(req, res){
-  res.render('about',{title:'About'})
+  res.render('about',{title:'About', user: req.user})
  });
 
  app.get('/feedback', function(req, res){
-  res.render('feedback',{title:'Feedback'})
+  res.render('feedback',{title:'Feedback', user: req.user})
  });
 
  app.get('/privacy', function(req, res){
-  res.render('privacy',{title:'Privacy Policy'})
+  res.render('privacy',{title:'Privacy Policy', user: req.user})
  });
 
  app.get('/login', function(req, res){
-  res.render('login',{title:'login'});
+  res.render('login',{title:'login', user: req.user});
   res.sendfile('./html/auth.html');
  });
 

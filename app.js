@@ -44,7 +44,9 @@ passport.use(new FacebookStrategy({
   callbackURL: 'http://localhost:3000/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
-    done(null, profile);
+    db.User.findOrCreate({id: profile.id}, {firstname: profile.name.givenName}, {lastname: profile.name.familyName}, {picture: profile.profileURL}).success(function(){
+      done(null, profile);
+     });
   });
 }));
  
@@ -69,9 +71,7 @@ if ('development' == app.get('env')) {
 }
 
 
-
-
-require('./routes/main')(app,passport);
+require('./routes/main')(app, passport);
 
  
 

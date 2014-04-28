@@ -1,174 +1,166 @@
-var cData = function(){
-  this.shapeArray = [];
-  this.owner = '';
-  this.created = new Date(year, month, day, hours, minutes, seconds, milliseconds);
-}
+var thisCanvas = {
+  path: null,
+  h1: null,
+  h2: null,
+  g: null
+};
 
-var placeTriangleVertices = function(tool, event, vertices, path){
 
-  if(event.shiftKey){
-    console.log("shift key");
-    tool.onMouseUp = function(event) {
-      path = new Path.Circle({
-        center: event.middlePoint,
-        radius: event.delta.length / 2
-      });
-    obj.fillColor = 'black';
+var Tools = function(){
+  this.triangleTool = new paper.Tool();
+  this.triangleTool.onMouseDown = function(event){
+    if(thisCanvas.path.segments.length < 3){
+      thisCanvas.path.add(event.point);
     }
-  }
-
-  tool.onMouseDown = function(event){
-    console.log("vertices: " + vertices);
-    if(vertices.length < 3){
-      path.add(event.point);
-      vertices.push(event.point);
-      console.log("length: " + vertices.length);
-      
-    } else if(vertices.length === 3){
-      var tnew = new Triangle();
-      tnew.drawTriangle();
-    } 
-  }
-};
-
-var regularTriangle = function(tool, event, path){
-  tool.onMouseUp = function(event) {
-    path = new Path.Circle({
-    center: event.middlePoint,
-    radius: event.delta.length / 2
-  });
-    obj.fillColor = 'black';
-  }
-};
-
-var placeCircle = function(tool, event, path){
-  if(event.shiftKey){
-    console.log("shift key");
-   }
-  tool.onMouseUp = function(event) {
-    path = new Path.Circle({
-    center: event.middlePoint,
-    radius: event.delta.length / 2
-   });
-    path.fillColor = 'black';
-  }
-};
-
-var select = function(tool, event, options){
-  var path;
-  var items = [];
-  var movePath = false;
-  var activeGroup = null;
-  tool.onMouseDown = function(event, options){
-    path = null;
-    var hitResult = project.hitTest(event.point, options);
-    if(!hitResult){
-      return;
-    }
-
-    if(hitResult){
-      path = hitResult.item;
-
-      if (event.modifiers.shift) {
-        var lastItem = items.pop();
-        var intersections = path.getIntersections(lastItem);
-        activeGroup = new Group([lastItem, path])
-
-        for (var i = 0; i < intersections.length; i++) {
-          new Path.Circle({
-            center: intersections[i].point,
-            radius: 5,
-            fillColor: '#009dec'
-          }).removeOnDown();
-        }
-        items.push(lastItem);
-      } 
-      if(activeGroup){
-        $(window).keypress(function(e){
-          if(e.which == 100){
-            var joined = lastItem.unite(path);
-
-            console.log("joined: " + joined);
-           }
-        });
-        
-      }
-      items.push(path);
-
-    }
-    return items;
-    
-    movePath = hitResult.type == 'fill';
-    if (movePath){
-      project.activeLayer.addChild(hitResult.item);
-     }
-  }
-  tool.onMouseDrag = function(event) {
-  
-    path.position += event.delta;
-  
-  }
-};
-
-var Triangle = function(){
-  this.path = new Path();
-  this.path.fillColor = 'black';
-  this.vertices = [];
-  this.cursor = new paper.Tool();
-  this.cursor.activate();
-};
-
-Triangle.prototype.drawTriangle = function(){
-
-  var vertices = [];
-  placeTriangleVertices(tool, event, vertices, this.path);
-  this.path.closed = true;
-  return vertices;
-};
-
-var Circle = function(){
-  this.path = new Path();
-  this.cursor = new paper.Tool();
-  this.cursor.activate();
-};
-
-Circle.prototype.drawCircle = function(){
-  placeCircle(this.cursor, event, this.path);
-  return this;
-};
-
-
-var Selection = function(){
-  this.items = [];
-  this.cursor = new paper.Tool();
-  this.cursor.activate();
-};
-
-Selection.prototype.getSelection = function(){
-  var hitOptions = {
-    segments: true,
-    stroke: true,
-    fill: true,
-    tolerance: 5
+    thisCanvas.path.closed = true;
   };
 
- this.items = select(this.cursor, event, hitOptions, this.items);
+  this.regularTriangleTool = new paper.Tool();
+  this.regularTriangleTool.onMouseUp = function(event, p){
+    p = new Path.Circle({
+      center: event.middlePoint,
+      radius: event.delta.length / 2
+    });
+    p.fillColor = 'black';
+  };
+
+  this.circleTool = new paper.Tool();
+  this.circleTool.onMouseUp = function(event, p){
+    p = new Path.Circle({
+      center: event.middlePoint,
+      radius: event.delta.length / 2
+    });
+    p.fillColor = 'black';
+  };
+
+  this.selectTool = new paper.Tool();
+  this.selectTool.onMouseDown = function(event){
+    if(thisCanvas.h1 != null){
+      console.log("clearing 1st selection");
+      thisCanvas.h1.item.selected = false;
+    }
+    if(thisCanvas.h2 != null){
+      console.log("clearing 1st & 2nd selection");
+      thisCanvas.h1 = null;
+      thisCanvas.h2.item.selected = false;
+      thisCanvas.h2 = null;
+    }
+    thisCanvas.h1 = project.hitTest(event.point);
+    if(!thisCanvas.h1){
+      return;
+    } else {
+      thisCanvas.h1.item.selected = true;
+      return thisCanvas.h1;
+    }
+  };
+  this.selectTool.onMouseDrag = function(event){
+      thisCanvas.h1.item.position += event.delta;
+  };
+
+  this.selectTool.onKeyDown = function(event){
+    if(event.key == 'backspace' || event.key == 'delete'){
+      thisCanvas.h1.item.remove();
+    };
+    if(event.key == 'enter'){
+      thisCanvas.h1.item.selected = false;
+      var duplicate = thisCanvas.h1.item.clone();
+      duplicate.position.x += (duplicate.bounds.width/4);
+      duplicate.position.y += (duplicate.bounds.height/4);
+    };
+    if(event.key == 'shift' && thisCanvas.h1 != null){
+      var t2 = new paper.Tool();
+      t2.onMouseDown = function(event){
+        thisCanvas.h2 = project.hitTest(event.point);
+        if(!thisCanvas.h2 || (thisCanvas.h1.item.id == thisCanvas.h2.item.id)){
+          thisCanvas.h1.item.selected = false;
+          thisCanvas.h2.item.selected = false;          
+          paper.tools[3].activate();
+          return;
+        } else {
+          thisCanvas.h2.item.selected = true;
+          var intersections = (thisCanvas.h1.item).getIntersections(thisCanvas.h2.item);
+          thisCanvas.g = new Group([thisCanvas.h1.item, thisCanvas.h2.item]);
+          for (var i = 0; i < intersections.length; i++) {
+            new Path.Circle({
+              center: intersections[i].point,
+              radius: 5,
+              fillColor: '#009dec'
+            }).removeOnDown();
+          };
+          paper.tools[3].activate();
+          console.log(thisCanvas.g);
+          return thisCanvas.g;
+        };
+      };
+      t2.activate();
+    };
+  };
+
+  this.joinTool = new paper.Tool();
+  this.joinTool.onKeyDown = function(event){
+    if(event.key = 'enter'){
+      console.log(thisCanvas.g)
+      if(thisCanvas.g != null){
+        var joined = thisCanvas.g.children[0].unite(thisCanvas.g.children[1]);
+        joined.position = thisCanvas.g.children[0].position;
+        joined.fillColor = 'black';
+
+      };
+    };
+  };
+
+  this.subtractTool = new paper.Tool();
+  this.divideTool = new paper.Tool();
 };
 
 
-$("#triangle").click(function(){
-  var t = new Triangle();
-  t.drawTriangle();
-});
+Tools.prototype.useTool = function(type){
+  switch(type){
+    case "triangle":
+      var t = new Path();
+      this.triangleTool.activate();
+      break;
+    case "regularTriangle":
+      this.regularTriangleTool.activate();
+      break;
+    case "circle":
+      this.circleTool.activate();
+      break;
+    case "select":
+      this.selectTool.activate();
+      console.log(paper.tool);
+      break;
+    case "join":
+      this.joinTool.activate();
+      break;
+    case "subtract":
+      this.subtractTool.activate();
+      break;
+    case "divide":
+      this.divideTool.activate();
+      break;
+  }
+};
 
-$("#circle").click(function(){
-  var c = new Circle();
-  c.drawCircle();
-});
+
+
+
+
+(function (window, document) {
+ var t = new Tools();
   
-$("#select").click(function(){
-  console.log("selection tool");
-  var s = new Selection();
-  s.getSelection();
-});
+  $("#triangle").click(function(e){
+    t.useTool("triangle");
+  });
+  $("#circle").click(function(e){
+    t.useTool("circle");
+  });
+  $("#select").click(function(e){
+    t.useTool("select");
+  });
+  $("#join").click(function(e){
+    t.useTool('join');
+  })
 
+
+}(this, this.document));

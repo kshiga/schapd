@@ -1,3 +1,4 @@
+(function (window, document) {
 var thisCanvas = {
   path: null,
   h1: null,
@@ -6,7 +7,7 @@ var thisCanvas = {
 };
 
 
-var Tools = function(){
+var Tools = function(thisCanvas){
   this.triangleTool = new paper.Tool();
   this.triangleTool.onMouseDown = function(event){
     if(thisCanvas.path.segments.length < 3){
@@ -18,7 +19,7 @@ var Tools = function(){
   };
 
   this.regularTriangleTool = new paper.Tool();
-  this.regularTriangleTool.onMouseUp = function(event, p){
+  this.regularTriangleTool.onMouseUp = function(event){
     p = new Path.Circle({
       center: event.middlePoint,
       radius: event.delta.length / 2
@@ -27,7 +28,7 @@ var Tools = function(){
   };
 
   this.circleTool = new paper.Tool();
-  this.circleTool.onMouseUp = function(event, p){
+  this.circleTool.onMouseUp = function(event){
     p = new Path.Circle({
       center: event.middlePoint,
       radius: event.delta.length / 2
@@ -148,6 +149,9 @@ var Tools = function(){
       };
     };
   };
+
+  this.saveTool = new paper.Tool();
+  this.libraryTool = new paper.Tool();
 };
 
 
@@ -165,6 +169,9 @@ Tools.prototype.useTool = function(type){
       this.circleTool.activate();
       break;
     case "select":
+      thisCanvas.h1 = null;
+      thisCanvas.h2 = null;
+      thisCanvas.g = null;
       this.selectTool.activate();
       break;
     case "join":
@@ -178,12 +185,13 @@ Tools.prototype.useTool = function(type){
       break;
     case "export":
       this.exportTool.activate();
+    case "library":
+       this.libraryTool.activate();
   }
 };
 
-
-(function (window, document) {
- var t = new Tools();
+ var id = 0;
+ var t = new Tools(thisCanvas);
   
   $("#triangle").click(function(e){
     t.useTool("triangle");
@@ -206,4 +214,29 @@ Tools.prototype.useTool = function(type){
   $("#export").click(function(e){
     t.useTool('export');
   });
+  $("#save").click(function(e){
+    
+    if(thisCanvas.h1!= null){
+      id++;
+      var url = "/users/" + localData.id + "/shapes/create";
+      console.log(url);
+      $.post(url, {userid: localData.id
+                   , id: id
+                   , info: thisCanvas.h1.item.exportJSON({asString:false}
+            )}, function(){
+              console.log("bleh");
+           })
+    }
+   });
+
+ $("#library").click(function(e){
+    if(id > 0){
+      var url = "/users/" + localData.id + "/shapes/retrieve";
+      console.log(url);
+      $.get(url, {userid: localData.id}, function(){
+          console.log("bleh");
+        })
+    }
+   });
+  
 }(this, this.document));

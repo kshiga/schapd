@@ -2,6 +2,9 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/draw.css')
+  script(type='text/javascript').
+   var localData = !{JSON.stringify(userid)}
+   console.log(localData);
 
   div(id='layout')
     div(id='menu')
@@ -15,11 +18,22 @@ block content
                 li: a(id='subtract', href='#') Subtract
                 li: a(id='divide', href='#') Divide
                 li: a(id='export', href='#') Export
-                li: a(href='#') Library
+                li
+                  form(action = "/users/" + user.id + "/shapes/create", method = "post")
+                    a(id='save') Save
+                    input(type="hidden", value="save")
+                li 
+                  form(action = "/users/" + user.id + "/shapes/retrieve", method = "get")
+                    a(id='library') Library
+                    input(type="hidden", value="library")
     div(id='main')
       div(class='content')
         canvas(id='myCanvas', resize="true")
 
+
+
+
+
   script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")
-  script(src='/javascripts/inup.js') 
+
   script(type="text/paperscript", src="/javascripts/paperscript.js", canvas="myCanvas")

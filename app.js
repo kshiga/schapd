@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var user    = require('./routes/user');
+var shape    = require('./routes/shape');
 var http = require('http');
 var path = require('path');
 var pg = require('pg');
@@ -44,8 +44,12 @@ passport.use(new FacebookStrategy({
   callbackURL: 'http://localhost:3000/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
-    db.User.findOrCreate({id: profile.id}, {firstname: profile.name.givenName}, {lastname: profile.name.familyName}, {picture: profile.profileURL}).success(function(){
-      done(null, profile);
+    db.User.findOrCreate({id: profile.id}, 
+      {firstname: profile.name.givenName}, 
+      {lastname: profile.name.familyName}, 
+      {picture: profile.profileURL}).success(function(){
+        
+        done(null, profile);
      });
   });
 }));
@@ -64,6 +68,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
 
+
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
+
+
+app.post('/users/:user_id/shapes/create', shape.create);
+
+app.get('/users/:user_id/shapes/retrieve', shape.retrieve);
 
 // development only
 if ('development' == app.get('env')) {

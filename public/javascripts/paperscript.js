@@ -11,8 +11,10 @@ var Tools = function(){
   this.triangleTool.onMouseDown = function(event){
     if(thisCanvas.path.segments.length < 3){
       thisCanvas.path.add(event.point);
+    } else {
+     thisCanvas.path.closed = true; 
     }
-    thisCanvas.path.closed = true;
+    console.log(thisCanvas.path);
   };
 
   this.regularTriangleTool = new paper.Tool();
@@ -98,26 +100,62 @@ var Tools = function(){
 
   this.joinTool = new paper.Tool();
   this.joinTool.onKeyDown = function(event){
-    if(event.key = 'enter'){
-      console.log(thisCanvas.g)
+    if(event.key == 'enter'){
       if(thisCanvas.g != null){
         var joined = thisCanvas.g.children[0].unite(thisCanvas.g.children[1]);
         joined.position = thisCanvas.g.children[0].position;
         joined.fillColor = 'black';
-
+        thisCanvas.g.remove();
+        paper.tools[3].activate();
       };
     };
   };
 
   this.subtractTool = new paper.Tool();
+  this.subtractTool.onKeyDown = function(event){
+    if(event.key == 'enter'){
+      if(thisCanvas.g != null){
+        var subtracted = thisCanvas.g.children[0].subtract(thisCanvas.g.children[1]);
+        subtracted.position = thisCanvas.g.children[0].position;
+        subtracted.fillColor = 'black';
+        thisCanvas.g.remove();
+        paper.tools[3].activate();
+      };
+    };
+  };
   this.divideTool = new paper.Tool();
+  this.divideTool.onKeyDown = function(event){
+    if(event.key == 'enter'){
+      if(thisCanvas.g != null){
+        var divided = thisCanvas.g.children[0].divide(thisCanvas.g.children[1]);
+        var excluded = thisCanvas.g.children[0].exclude(thisCanvas.g.children[1]);
+        divided.children[1].fillColor = 'black';
+        excluded.fillColor = 'black';
+        excluded.position = (thisCanvas.g.children[0].position + thisCanvas.g.children[1].position)/2;
+        excluded.position = (thisCanvas.g.children[0].position + thisCanvas.g.children[1].position)/2;
+        thisCanvas.g.remove();
+        paper.tools[3].activate();
+      };
+    };
+  };
+
+  this.exportTool = new paper.Tool();
+  this.exportTool.onKeyDown = function(event){
+    if(event.key == 'space'){
+      if(thisCanvas.h1 != null & thisCanvas.h2 == null){
+        var svg = thisCanvas.h1.itemexportSVG({asString: false, precision: 5, matchShapes: false});
+        console.log(svg);
+      };
+    };
+  };
 };
 
 
 Tools.prototype.useTool = function(type){
   switch(type){
     case "triangle":
-      var t = new Path();
+      thisCanvas.path = new Path();
+      thisCanvas.path.fillColor = 'black';
       this.triangleTool.activate();
       break;
     case "regularTriangle":
@@ -128,7 +166,6 @@ Tools.prototype.useTool = function(type){
       break;
     case "select":
       this.selectTool.activate();
-      console.log(paper.tool);
       break;
     case "join":
       this.joinTool.activate();
@@ -139,11 +176,10 @@ Tools.prototype.useTool = function(type){
     case "divide":
       this.divideTool.activate();
       break;
+    case "export":
+      this.exportTool.activate();
   }
 };
-
-
-
 
 
 (function (window, document) {
@@ -160,7 +196,14 @@ Tools.prototype.useTool = function(type){
   });
   $("#join").click(function(e){
     t.useTool('join');
-  })
-
-
+  });
+  $("#subtract").click(function(e){
+    t.useTool('subtract');
+  });
+  $("#divide").click(function(e){
+    t.useTool('divide');
+  });
+  $("#export").click(function(e){
+    t.useTool('export');
+  });
 }(this, this.document));

@@ -18,18 +18,19 @@ block content
                 li: a(id='subtract', href='#') Subtract
                 li: a(id='divide', href='#') Divide
                 li: a(id='export', href='#') Export
-                li
-                  form(action = "/users/" + user.id + "/shapes/create", method = "post")
-                    a(id='save') Save
-                    input(type="hidden", value="save")
-                li 
-                  form(action = "/users/" + user.id + "/shapes/retrieve", method = "get")
-                    a(id='library') Library
+                li(id='save')
+                  form(action = "/users/" + user.id + "/shapes", method = "post")
+                    input(type="hidden", id="info", name='info')
+                    input(type="submit", value="save")
+                li: a(id='library') Library
                     input(type="hidden", value="library")
     div(id='main')
       div(class='content')
         canvas(id='myCanvas', resize="true")
-
+      div(id='library-container')
+        div(class="pure-menu pure-menu-open")
+          a(class="pure-menu-heading", href='#') Shape Library
+          ul(id='library-list')
 
 
 

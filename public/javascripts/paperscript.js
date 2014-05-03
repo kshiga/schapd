@@ -53,6 +53,8 @@ var Tools = function(thisCanvas){
       return;
     } else {
       thisCanvas.h1.item.selected = true;
+
+      $("#info").val(thisCanvas.h1.item.exportJSON({asString:true}));
       return thisCanvas.h1;
     }
   };
@@ -190,8 +192,10 @@ Tools.prototype.useTool = function(type){
   }
 };
 
- var id = 0;
- var t = new Tools(thisCanvas);
+  var id = 0;
+  var t = new Tools(thisCanvas);
+  $("#library-container").hide();
+  var open = false;
   
   $("#triangle").click(function(e){
     t.useTool("triangle");
@@ -215,26 +219,29 @@ Tools.prototype.useTool = function(type){
     t.useTool('export');
   });
   $("#save").click(function(e){
-    
     if(thisCanvas.h1!= null){
       id++;
-      var url = "/users/" + localData.id + "/shapes/create";
-      console.log(url);
-      $.post(url, {userid: localData.id
-                   , id: id
-                   , info: thisCanvas.h1.item.exportJSON({asString:false}
-            )}, function(){
-              console.log("bleh");
-           })
-    }
+      var item = "<li id =\""+ id +"\"><a href='#'> " + id + " </a></li>"
+      $("#library-list").append(item);
+    };
+
    });
 
  $("#library").click(function(e){
+  if(!open){
+    $("#library-container").show();
+    open = true;
+  } else {
+    $("#library-container").hide();
+    open = false;
+  }
+
+
     if(id > 0){
-      var url = "/users/" + localData.id + "/shapes/retrieve";
+      var url = "/users/" + localData.id + "/shapes";
       console.log(url);
-      $.get(url, {userid: localData.id}, function(){
-          console.log("bleh");
+      $.get(url, {userid: localData.id, id: 1}, function(){
+
         })
     }
    });

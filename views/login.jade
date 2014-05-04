@@ -1,8 +1,19 @@
 extends layout 
 
 block content
-
-
-  div(class="content center-area is-center")
-    div(class="block")
-      a(href='/auth/facebook', class='pure-button ') sign in with Facebook
+  link(rel='stylesheet', href='/stylesheets/login.css')
+  div(class="content-container")
+    div(class="content")
+      div(class='schapd')
+        img(src='images/schapd-logo.png', height="150", width="477")
+      div(class='block')
+        h4 Use your Facebook account to create an account and sign in!
+      div(class='button')
+        a(href='/auth/facebook', class='pure-button sign-in') sign in with Facebook
+  div(class="footer l-box is-center")
+    div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
+      ul
+        li: a(href="#") About
+        li: a(href="https://github.com/kshiga/schapd") Git
+        li: a(href="#") Privacy
+        li: a(href="#") Feedback

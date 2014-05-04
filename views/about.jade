@@ -1,4 +1,24 @@
 extends layout 
 
 block content
-	p. something will go here eventually
+  link(rel='stylesheet', href='/stylesheets/about.css')
+  div(class='content-container l-box')
+    div(class='logo pure-g')
+      div(class='pure-u-1-24')
+        img(src='images/logo.png') 
+      div(class='pure-u-2-3')
+        h1 About Schāpd
+    div(class='main-content pure-g')
+      div(id='Schāpd-basics')
+      div(id='Schāpd-jusitifications')
+      div(id='Schāpd-influences')
+      div(id='Schāpd-technologies')
+      div(id='Schāpd-links')
+
+  div(class="footer l-box is-center")
+    div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
+      ul
+        li: a(href="#") About
+        li: a(href="https://github.com/kshiga/schapd") Git
+        li: a(href="#") Privacy
+        li: a(href="#") Feedback

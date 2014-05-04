@@ -1,54 +1,29 @@
 #main
     overflow-x: hidden
 
-
 #shapes
 	background-color: blue
 
-
-
-.header 
-     color: #333
-     text-align: center
-     border-bottom: 1px solid #eee
- 
-.header h1 
-    margin: 0.2em 0
-    font-size: 3em
-    font-weight: 100
-
-.header h2 
-    font-weight: 100
-    color: #ccc
-    padding: 0
-    margin: 0.2em 0
-    
-
-.content-subhead 
-    margin: 50px 0 20px 0
-    font-weight: 300
-    color: #888
-
-
-
 #menu 
-    width: 80px
+    width: 40px
     position: absolute
-    top: 46
+    top: 47px
     left: 0
     bottom: 0
-    z-index: 11 
-    background: #191818
+    z-index: 2
+    background: #fff
     overflow-y: auto
+    border: none
+    height:83%
 
 /*
 All anchors inside the menu should be styled like this.
 */
 #menu a 
 #library-container a 
-    color: #999
     border: none
-    padding: 0.6em 0 0.6em 0.6em
+    padding: 0.6em 0.6em 0.6em 0.6em
+
 
 
 /*
@@ -62,6 +37,7 @@ Remove all background/borders, since we are applying them to #menu.
     background: transparent
 
 
+
 /*
 Add that light border to separate items into groups.
 */
@@ -69,7 +45,7 @@ Add that light border to separate items into groups.
 #menu .pure-menu .menu-item-divided 
 #library-container .pure-menu ul
 #library-container .pure-menu .menu-item-divided     
-    border-top: 1px solid #333
+    padding-top: 3px
 
 /*
 Change color of the anchor links on hover/focus.
@@ -78,7 +54,7 @@ Change color of the anchor links on hover/focus.
 #menu .pure-menu li a:focus 
 #library-container .pure-menu li a:hover
 #library-container .pure-menu li a:focus 
-    background: #333
+    background: rgba(0, 0, 0, 0.02)
 
 
 /*
@@ -88,7 +64,9 @@ This styles the selected menu item `<li>`.
 #menu .pure-menu-heading 
 #library-container .pure-menu-selected
 #library-container .pure-menu-heading 
-    background: #1f8dd6
+  background: #C8C8A9
+  font-size: 12px
+
     
 /*
 This styles a link within a selected menu item `<li>`.
@@ -96,6 +74,7 @@ This styles a link within a selected menu item `<li>`.
 #menu .pure-menu-selected a 
 #library-container .pure-menu-selected a     
     color: #fff
+    border: none
         
 
 /*
@@ -103,9 +82,9 @@ This styles the menu heading.
 */
 #menu .pure-menu-heading 
 #library-container .pure-menu-heading 
-    font-size: 110%
     color: #fff
     margin: 0
+    border: none
 
 #library-container
     width: 200px
@@ -113,11 +92,49 @@ This styles the menu heading.
     top: 46
     right: 0
     bottom: 0
-    z-index: 10
-    background: #191818
+    z-index: 3
+    background: #000
+    border: 1px
     overflow-y: hidden
     overflow-x: auto
+    height:83.25%
 
 
 #myCanvas
     width: 100%
+
+
+#save-btn
+  border: none !important
+  background:url('../images/tools/save-icon.png')
+  width: 40px
+  background-size:20px 20px
+  background-repeat: no-repeat
+  background-position: center center
+
+
+
+.footer 
+  background: #C5E0DC
+  position:absolute
+  top: 90%
+  text-align: center
+  width: 100%
+
+.footer-links
+  padding: 0.2em
+  text-align: center
+  z-index: 10
+  bottom: 0
+  background: none !important
+  border: none !important
+  text-transform:uppercase
+  letter-spacing: 0.16em !important
+
+
+.footer-links li a:hover,
+.footer-links li a:focus 
+  border: none
+  background: rgba(255,255,255,0.17)
+  radius: 5px
+

@@ -54,7 +54,7 @@ a.pure-button-primary
   background-color: #FA6900
   color: #E0E4CC
   border-radius: 5px
-  letter-spacing: 0.16em
+  letter-spacing: 0.16em !important
 
 a.pure-button-primary :hover
   background-color: white !important
@@ -97,7 +97,7 @@ a.pure-button-primary :hover
 
 .splash-subhead 
   color: black
-  letter-spacing: 0.2em
+  letter-spacing: 0.2em !important
   font-size: 20px
   opacity: 0.8
   padding-left: 70px
@@ -115,7 +115,7 @@ a.pure-button-primary :hover
 .content-head 
   font-weight: 400
   text-transform: uppercase
-  letter-spacing: 0.7em
+  letter-spacing: 0.7em !important
   margin: 2em 0 1em
 
 .content-head-ribbon 
@@ -142,6 +142,26 @@ a.pure-button-primary :hover
   margin-right: auto
   margin-left: auto
   vertical-align: middle
+
+
+
+.footer-links
+  padding: 0.2em
+  text-align: center
+  z-index: 6
+  bottom: 0
+  background: none !important
+  border: none !important
+  text-transform:uppercase
+  letter-spacing: 0.16em !important
+
+
+.footer-links li a:hover,
+.footer-links li a:focus 
+  border: none
+  background: rgba(255,255,255,0.17)
+  radius: 5px
+
 
 @media (min-width: 48em) 
   body 

@@ -9,30 +9,44 @@ block content
   div(id='layout')
     div(id='menu')
         div(class='pure-menu pure-menu-open')
-            a(class='pure-menu-heading', href='#') Tools
             ul
-                li: a(id='triangle', href="#") Triangle
-                li: a(id='circle', href="#") Circle
-                li: a(id='select', href='#') Select
-                li: a(id='join', href='#') Join
-                li: a(id='subtract', href='#') Subtract
-                li: a(id='divide', href='#') Divide
-                li: a(id='export', href='#') Export
-                li(id='save')
+                li: a(id='triangle', href="#")
+                  img(src='images/tools/triangle-icon.png', height="20px", width="20px")
+                li: a(id='circle', href="#") 
+                  img(src='images/tools/circle-icon.png', height="20px", width="20px")
+                li: a(id='select', href='#')
+                  img(src='images/tools/select.png', height="20px", width="20px")
+                li: a(id='join', href='#') 
+                  img(src='images/tools/join-icon.png', height="20px", width="20px")
+                li: a(id='subtract', href='#')
+                  img(src='images/tools/subtract-icon.png', height="20px", width="20px")
+                li: a(id='divide', href='#')
+                  img(src='images/tools/divide-icon.png', height="20px", width="20px")
+                li: a(id='export', href='#')
+                  img(src='images/tools/export-icon.png', height="20px", width="20px")
+                li(id='save' class='menu-item-divided')
                   form(action = "/users/" + user.id + "/shapes", method = "post")
                     input(type="hidden", id="info", name='info')
-                    input(type="submit", value="save")
-                li: a(id='library') Library
-                    input(type="hidden", value="library")
+                    input(type="submit", id='save-btn', value='    ')
+                li: a(id='library') 
+                  img(src='images/tools/library-icon.png', height="20px", width="20px")
+
     div(id='main')
+      div(class="footer l-box is-center")
+        div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
+          ul
+            li: a(href="#") About
+            li: a(href="https://github.com/kshiga/schapd") Git
+            li: a(href="#") Privacy
+            li: a(href="#") Feedback
+
       div(class='content')
         canvas(id='myCanvas', resize="true")
       div(id='library-container')
         div(class="pure-menu pure-menu-open")
           a(class="pure-menu-heading", href='#') Shape Library
           ul(id='library-list')
-
-
+  
 
 
   script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")

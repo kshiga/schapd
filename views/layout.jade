@@ -5,31 +5,31 @@ html
     link(rel='stylesheet', href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css")
     script(src='//code.jquery.com/jquery-1.10.2.min.js')
     link(rel='stylesheet', href='/stylesheets/header.css')
-      
+
 
  
   body
   div(class='header')
     if(user)
       div(class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed ")
-        a(class="pure-menu-heading", href="/"): img(src='/images/schapd-logo.png', height="30px", width ="100")
+        a(class="pure-menu-heading", href="/"): img(src='/images/schapd-logo.png', height="30px", width ="100px")
         ul
-          li: a(href="/") Home
-          li: a(href="/about") About
-          li: a(href="/draw") Draw
+          li: a(href="/") HOME
+          li: a(href="/about") ABOUT
+          li: a(href="/draw") DRAW
         ul(id="right-links")
           li: img(id="userPicture")
-          li: a(href="/logout") Log Out
+          li: a(href="/logout") SIGN OUT
 
     else
       div(class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed ")
         a(class="pure-menu-heading", href="/"): img(src='/images/schapd-logo.png', height="30px", width ="100")
         ul
-          li: a(href="/") Home
-          li: a(href="/about") About
-          li: a(href="/draw") Draw
+          li: a(href="/") HOME
+          li: a(href="/about") ABOUT
+          li: a(href="/draw") TRY
         ul(id="right-links")
-          li: a(href="/login") Sign in 
+          li: a(href="/login") SIGN IN
 
     block content
 

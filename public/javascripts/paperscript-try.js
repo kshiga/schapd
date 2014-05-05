@@ -225,35 +225,18 @@ Tools.prototype.useTool = function(type){
   $("#export").click(function(e){
     t.useTool('export');
   });
-  $("#save").click(function(e){
-    if(thisCanvas.h1!= null){
-      id++;
-      var item = "<li id =\""+ id +"\"><a href='#'> " + id + " </a></li>"
-      $("#library-list").append(item);
-    };
-   });
+  $("#save").click(function(e){ });
+
  $("#library").click(function(e){
-  if(!open){
-    $("#library-container").show();
-    open = true;
-  } else {
-    $("#library-container").hide();
-    open = false;
-  }
-  
-
-  
-
-    if(id > 0){
-      var url = "/users/" + localData.id + "/shapes";
-      console.log(url);
-      $.get(url, {userid: localData.id, id: 1}, function(){
-
-        })
+    if(!open){
+      $("#library-container").show();
+      open = true;
+    } else {
+      $("#library-container").hide();
+      open = false;
     }
-   });
-  $(document).keypress(function(e){
-    console.log("hello")
   });
+
+  
   
 }(this, this.document));

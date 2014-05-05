@@ -38,6 +38,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var FACEBOOK_APP_ID = 521260001317076;
 var FACEBOOK_APP_SECRET = 'd4ee4f232ba115d7b571871869107462';
 
+
+// use for call back url when not in heroku app 'http://localhost:3000/auth/facebook/callback' 
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,

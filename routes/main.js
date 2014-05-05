@@ -10,6 +10,10 @@ module.exports = function (app, passport) {
   res.render('draw', {title: 'Draw', user: req.user, userid: req.user});
   res.locals.user1 = req.user;
  });
+
+  app.get('/drawtry', function(req, res){
+  res.render('draw-try', {title: 'Draw'});
+ });
   
  app.get('/about', function(req, res){
   res.render('about',{title:'About', user: req.user, userid: req.user});

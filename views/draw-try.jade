@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/draw.css')
+
+
+  div(id='layout')
+    div(id='menu')
+        div(class='pure-menu pure-menu-open')
+            ul
+                li: a(id='triangle', href="#")
+                  img(src='images/tools/triangle-icon.png', height="20px", width="20px")
+                li: a(id='circle', href="#") 
+                  img(src='images/tools/circle-icon.png', height="20px", width="20px")
+                li: a(id='select', href='#')
+                  img(src='images/tools/select.png', height="20px", width="20px")
+                li: a(id='join', href='#') 
+                  img(src='images/tools/join-icon.png', height="20px", width="20px")
+                li: a(id='subtract', href='#')
+                  img(src='images/tools/subtract-icon.png', height="20px", width="20px")
+                li: a(id='divide', href='#')
+                  img(src='images/tools/divide-icon.png', height="20px", width="20px")
+                li: a(id='export', href='#')
+                  img(src='images/tools/export-icon.png', height="20px", width="20px")
+                li: a(id='save', href='#')
+                  img(src='images/tools/save-icon.png', height="20px", width="20px")
+                li: a(id='library') 
+                  img(src='images/tools/library-icon.png', height="20px", width="20px")
+
+    div(id='main')
+      div(class="footer l-box is-center")
+        div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
+          ul
+            li: a(href="/about") About
+            li: a(href="https://github.com/kshiga/schapd") Git
+            li: a(href="#") Privacy
+            li: a(href="#") Feedback
+
+      div(class='content')
+        canvas(id='myCanvas', resize="true")
+      div(id='library-container')
+        div(class="pure-menu pure-menu-open")
+          a(class="pure-menu-heading", href='#') Shape Library
+          ul(id='library-list')
+            li In order to retrieve saved shapes, please login
+
+  
+
+
+  script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")
+
+  script(type="text/paperscript", src="/javascripts/paperscript-try.js", canvas="myCanvas")

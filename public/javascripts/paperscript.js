@@ -6,16 +6,29 @@ var thisCanvas = {
   g: null
 };
 
+var clearSelection = function(){
+  if(thisCanvas.h1 != null){
+    console.log("clearing 1st selection");
+    thisCanvas.h1.item.selected = false;
+  }
+  if(thisCanvas.h2 != null){
+    console.log("clearing 1st & 2nd selection");
+    thisCanvas.h1 = null;
+    thisCanvas.h2.item.selected = false;
+    thisCanvas.h2 = null;
+  }
+}
+
 
 var Tools = function(thisCanvas){
   this.triangleTool = new paper.Tool();
   this.triangleTool.onMouseDown = function(event){
     if(thisCanvas.path.segments.length < 3){
       thisCanvas.path.add(event.point);
-    } else {
-     thisCanvas.path.closed = true; 
+      if(thisCanvas.path.segments.length === 3){
+        thisCanvas.path.closed = true; 
+      }
     }
-    console.log(thisCanvas.path);
   };
 
   this.regularTriangleTool = new paper.Tool();
@@ -38,16 +51,7 @@ var Tools = function(thisCanvas){
 
   this.selectTool = new paper.Tool();
   this.selectTool.onMouseDown = function(event){
-    if(thisCanvas.h1 != null){
-      console.log("clearing 1st selection");
-      thisCanvas.h1.item.selected = false;
-    }
-    if(thisCanvas.h2 != null){
-      console.log("clearing 1st & 2nd selection");
-      thisCanvas.h1 = null;
-      thisCanvas.h2.item.selected = false;
-      thisCanvas.h2 = null;
-    }
+    
     thisCanvas.h1 = project.hitTest(event.point);
     if(!thisCanvas.h1){
       return;
@@ -160,6 +164,7 @@ var Tools = function(thisCanvas){
 Tools.prototype.useTool = function(type){
   switch(type){
     case "triangle":
+      clearSelection();
       thisCanvas.path = new Path();
       thisCanvas.path.fillColor = 'black';
       this.triangleTool.activate();
@@ -168,9 +173,11 @@ Tools.prototype.useTool = function(type){
       this.regularTriangleTool.activate();
       break;
     case "circle":
+      clearSelection();
       this.circleTool.activate();
       break;
     case "select":
+      clearSelection();
       thisCanvas.h1 = null;
       thisCanvas.h2 = null;
       thisCanvas.g = null;
@@ -224,9 +231,7 @@ Tools.prototype.useTool = function(type){
       var item = "<li id =\""+ id +"\"><a href='#'> " + id + " </a></li>"
       $("#library-list").append(item);
     };
-
    });
-
  $("#library").click(function(e){
   if(!open){
     $("#library-container").show();
@@ -235,7 +240,11 @@ Tools.prototype.useTool = function(type){
     $("#library-container").hide();
     open = false;
   }
-
+  
+  $(document).keypress(function(e){
+    console.log("hello")
+  });
+  
 
     if(id > 0){
       var url = "/users/" + localData.id + "/shapes";

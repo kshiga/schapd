@@ -1,11 +1,27 @@
 var fs        = require('fs')
   , path      = require('path')
   , Sequelize = require('sequelize')
-  , lodash    = require('lodash')
-  , sequelize = new Sequelize('schapd', 'root', null ,{
-     dialect: 'postgres'
-  })
+  , lodash    = require('lodash')  
   , db        = {}
+  , sequelize = null;
+
+if (process.env.HEROKU_POSTGRESQL_BLUE_URL) {
+    // the application is executed on Heroku ... use the postgres database
+    var match = process.env.HEROKU_POSTGRESQL_BLUE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
+ 
+    sequelize = new Sequelize(match[5], match[1], match[2], {
+      dialect:  'postgres',
+      protocol: 'postgres',
+      port:     match[4],
+      host:     match[3],
+      logging:  true //false
+    })
+  } else {
+    // the application is executed on the local machine ... use mysql
+    
+    sequelize = new Sequelize('schapd', 'root', null ,{dialect: 'postgres'})
+  }
+  
 
 fs
   .readdirSync(__dirname)

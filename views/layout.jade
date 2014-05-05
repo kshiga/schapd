@@ -18,7 +18,8 @@ html
           li: a(href="/about") ABOUT
           li: a(href="/draw") DRAW
         ul(id="right-links")
-          li: img(id="userPicture")
+          li: img(id="userPicture", src= "http://graph.facebook.com/" + user.username + "/picture")
+          li(id="firstname")
           li: a(href="/logout") SIGN OUT
 
     else
@@ -30,6 +31,14 @@ html
           li: a(href="/draw") TRY
         ul(id="right-links")
           li: a(href="/login") SIGN IN
+
+    script(type='text/javascript').
+      var localData = !{JSON.stringify(userid)}
+      console.log(localData);
+      if(localData != null){
+        console.log(localData.displayName)
+        $("#firstname").text("" +localData.displayName+ "")
+      }
 
     block content
 

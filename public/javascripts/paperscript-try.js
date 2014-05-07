@@ -6,6 +6,8 @@ var thisCanvas = {
   g: null
 };
 
+
+
 var clearSelection = function(){
   if(thisCanvas.h1 != null){
     console.log("clearing 1st selection");

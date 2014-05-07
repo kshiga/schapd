@@ -16,18 +16,15 @@ module.exports = function (app, passport) {
  });
   
  app.get('/about', function(req, res){
-  res.render('about',{title:'About', user: req.user, userid: req.user});
-  res.locals.user1 = req.user;
+  res.render('about',{title:'About'});
  });
 
  app.get('/feedback', function(req, res){
-  res.render('feedback',{title:'Feedback', user: req.user, userid: req.user});
-  res.locals.user1 = req.user;
+  res.render('feedback',{title:'Feedback'});
  });
 
  app.get('/privacy', function(req, res){
-  res.render('privacy',{title:'Privacy Policy', user: req.user, userid: req.user});
-  res.locals.user1 = req.user;
+  res.render('privacy',{title:'Privacy Policy'});
  });
 
  app.get('/login', function(req, res){

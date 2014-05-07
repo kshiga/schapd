@@ -1,13 +1,19 @@
 extends layout 
 
 block content
-  link(rel='stylesheet', href='/stylesheets/header.css')
-
-  div(class='header')
-      div(class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed")
-          a(class="pure-menu-heading", href="") Schapd
-          ul
-              li(class="pure-menu-selected"): a(href="/") Home
-              li: a(href="#") About
-              li: a(href="#") Sign in 
-              li: a(href="#") Draw
+  link(rel='stylesheet', href='/stylesheets/login.css')
+  div(class="content-container")
+    div(class="content")
+      div(class='schapd')
+        img(src='images/schapd-logo.png', height="150", width="477")
+      div(class='block')
+        h4 Privacy Policy
+        p. Schapd promises to not divulge any personal information 
+        
+  div(class="footer l-box is-center")
+    div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
+      ul
+        li: a(href="/about") About
+        li: a(href="https://github.com/kshiga/schapd") Git
+        li: a(href="/privacy") Privacy
+        li: a(href="/feedback") Feedback

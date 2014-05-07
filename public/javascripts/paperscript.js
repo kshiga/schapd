@@ -28,7 +28,7 @@ var clearSelection = function(){
   path: null,
   h1: null,
   h2: null,
-  g: null 
+  g: null
   }
 }
 
@@ -42,6 +42,16 @@ var Tools = function(thisCanvas){
   //triangle tool
   this.triangleTool = new paper.Tool();
   this.triangleTool.onMouseDown = function(event){
+    if(thisCanvas.h1 != null){
+      console.log("clearing 1st selection");
+      thisCanvas.h1.item.selected = false;
+    }
+    if(thisCanvas.h2 != null){
+      console.log("clearing 1st & 2nd selection");
+      thisCanvas.h1 = null;
+      thisCanvas.h2.item.selected = false;
+      thisCanvas.h2 = null;
+    }
     if(thisCanvas.path.segments.length < 3){
       thisCanvas.path.add(event.point);
       if(thisCanvas.path.segments.length === 3){
@@ -57,12 +67,21 @@ var Tools = function(thisCanvas){
   // Circle Tool
   this.circleTool = new paper.Tool();
   this.circleTool.onMouseUp = function(event){
+    if(thisCanvas.h1 != null){
+      console.log("clearing 1st selection");
+      thisCanvas.h1.item.selected = false;
+    }
+    if(thisCanvas.h2 != null){
+      console.log("clearing 1st & 2nd selection");
+      thisCanvas.h1 = null;
+      thisCanvas.h2.item.selected = false;
+      thisCanvas.h2 = null;
+    }
     p = new Path.Circle({
       center: event.middlePoint,
       radius: event.delta.length / 2
     });
     p.fillColor = 'black';
-    $("#myCanvas").css("cursor", "url('../images/tools/select-cursor.png'), move")
     thisCanvas.path = null;
     paper.tools[1].activate();
   };
@@ -125,8 +144,8 @@ var Tools = function(thisCanvas){
             }).removeOnDown();
           };
           paper.tools[2].activate();
+          console.log("returned group: ");
           console.log(thisCanvas.g);
-          return thisCanvas.g;
         };
       };
       t2.activate();
@@ -160,22 +179,23 @@ Tools.prototype.useTool = function(type){
       this.triangleTool.activate();
       break;
     case "circle":
-      clearSelection();
       this.circleTool.activate();
       break;
     case "select":
-      clearSelection();
       this.selectTool.activate();
       break;
     case "join":
+      console.log("join clicked");
+      console.log("using group: " + thisCanvas.g)
       if(thisCanvas.g != null){
+        console.log("joining")
         var joined = thisCanvas.g.children[0].unite(thisCanvas.g.children[1]);
         joined.position = thisCanvas.g.children[0].position;
         joined.fillColor = 'black';
         thisCanvas.g.remove();
         paper.tools[2].activate();
+        thisCanvas.g = new Group();
       };
-      clearSelection();
       paper.tools[2].activate();
       $("#myCanvas").css("cursor", "url('../images/tools/select-cursor.png'), move");
       break;
@@ -186,8 +206,8 @@ Tools.prototype.useTool = function(type){
         subtracted.fillColor = 'black';
         thisCanvas.g.remove();
         paper.tools[2].activate();
+        thisCanvas.g = new Group();
       };
-      clearSelection();
       paper.tools[2].activate();
       $("#myCanvas").css("cursor", "url('../images/tools/select-cursor.png'), move");
       break;
@@ -201,8 +221,8 @@ Tools.prototype.useTool = function(type){
         excluded.position = (thisCanvas.g.children[0].position + thisCanvas.g.children[1].position)/2;
         thisCanvas.g.remove();
         paper.tools[2].activate();
+        thisCanvas.g = new Group();
       };
-      clearSelection();
       paper.tools[2].activate();
       $("#myCanvas").css("cursor", "url('../images/tools/select-cursor.png'), move");
       break;

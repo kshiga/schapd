@@ -187,7 +187,7 @@ Tools.prototype.useTool = function(type){
     case "join":
       console.log("join clicked");
       console.log("using group: " + thisCanvas.g)
-      if(thisCanvas.g != null){
+      if(thisCanvas.g != null ){
         console.log("joining")
         var joined = thisCanvas.g.children[0].unite(thisCanvas.g.children[1]);
         joined.position = thisCanvas.g.children[0].position;

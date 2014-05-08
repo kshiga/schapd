@@ -43,7 +43,7 @@ var FACEBOOK_APP_SECRET = 'd4ee4f232ba115d7b571871869107462';
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: 'http://schapd.herokuapp.com/auth/facebook/callback'
+  callbackURL: 'http://localhost:3000/auth/facebook/callback' || 'http://schapd.herokuapp.com/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
     db.User.findOrCreate({id: profile.id}, 
@@ -78,7 +78,7 @@ app.use(function(req,res,next){
 
 
 
-app.post('/users/:user_id/shapes', shape.create);
+app.post('/users/:user_id/shapes/create', shape.create);
 
 app.get('/users/:user_id/shapes', shape.retrieve);
 

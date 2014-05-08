@@ -23,11 +23,13 @@ block content
                 li: a(id='export', href='#')
                   img(src='images/tools/export-icon.png', height="20px", width="20px")
                 li(id='save' class='menu-item-divided')
-                  form(action = "/users/" + user.id + "/shapes", method = "post")
+                  form(action = "/users/" + user.id + "/shapes/create", method = "post")
                     input(type="hidden", id="info", name='info')
                     input(type="submit", id='save-btn', value='    ')
-                li: a(id='library') 
-                  img(src='images/tools/library-icon.png', height="20px", width="20px")
+                li(id='library') 
+                  form(action = "/users/" + user.id + "/shapes", method = "get")
+                    input(type="hidden")
+                    input(type="submit", id='library-btn', value='    ')
 
     div(id='main')
       div(class="footer l-box is-center")
@@ -44,7 +46,9 @@ block content
         div(class="pure-menu pure-menu-open")
           a(class="pure-menu-heading", href='#') Shape Library
           ul(id='library-list')
-  
+            each shape in shapes
+              li 
+                canvas(height="200px", width="200px", id="c"+ shape.dataValues.id) 
 
 
   script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")

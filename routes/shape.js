@@ -11,9 +11,15 @@ exports.create = function(req, res) {
 }
 
 exports.retrieve = function(req, res) {
-  db.User.find({ where: { id: req.param('user') } }).success(function(user) {
-    db.Shape.find({where:{id: req.param('id')}}).success(function(shape){
-      console.log(shape);
+  console.log("starting retrieve");
+  db.User.find({ where: { id: req.user.id } }).success(function(user) {
+    console.log("found user");
+    console.log(user);
+    db.Shape.findAll().success(function(shape){
+      res.shapes = shape
+      for(i =0; i< shape.length; i++){
+        console.log(shape[i].dataValues.id)
+      }
     });
   })
 }

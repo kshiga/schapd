@@ -33,12 +33,14 @@ html
           li: a(href="/login") SIGN IN
 
     script(type='text/javascript').
-      var localData = !{JSON.stringify(userid)}
-      console.log(localData);
+      var localData = !{JSON.stringify(user)}
+      console.log(localData)
       if(localData != null){
         console.log(localData.displayName)
         $("#firstname").text("" +localData.displayName+ "")
       }
+      var sData = !{JSON.stringify(shapes)} 
+      console.log(sData)
 
     block content
 

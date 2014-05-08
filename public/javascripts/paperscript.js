@@ -105,7 +105,7 @@ var Tools = function(thisCanvas){
       return;
     } else {
       thisCanvas.h1.item.selected = true;
-      $("#info").val(thisCanvas.h1.item.exportJSON({asString:true}));
+      $("#info").val(thisCanvas.h1.item.exportJSON());
       return thisCanvas.h1;
     }
   };
@@ -269,11 +269,6 @@ Tools.prototype.useTool = function(type){
     t.useTool('export');
   });
   $("#save").click(function(e){
-    if(thisCanvas.h1!= null){
-      id++;
-      var item = "<li id =\""+ id +"\"><a href='#'> " + id + " </a></li>"
-      $("#library-list").append(item);
-    };
    });
  $("#library").click(function(e){
   if(!open){
@@ -283,16 +278,19 @@ Tools.prototype.useTool = function(type){
     $("#library-container").hide();
     open = false;
   }
-  if(id > 0){
-      var url = "/users/" + localData.id + "/shapes";
-      console.log(url);
-      $.get(url, {userid: localData.id, id: 1}, function(){
-
-        })
-  }
 });
-  // $(document).keypress(function(e){
-  //   console.log("hello")
-  // });
+
+ $(window).ready(function(e){
+  for(var i = 0; i < sData.length; i++){
+    var id = "c"+ sData[i].id;
+    var pr = new Project(id)
+    pr.activate();
+    paper.project.activeLayer.importJSON(sData[i].info);
+    paper.project.activeLayer.children[0].scale(0.5)
+    paper.project.activeLayer.children[0].position.x=50;
+    paper.project.activeLayer.children[0].position.y=50;
+  }
+  paper.projects[0].activate();
+ })
   
 }(this, this.document));

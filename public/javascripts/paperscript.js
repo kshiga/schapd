@@ -38,6 +38,7 @@ var assignedToCB = function(listId, data){
     console.log(data);
     paper.projects[0].activate();
     paper.project.activeLayer.importJSON(data);
+    paper.tools[2].activate();
   }
 }
 

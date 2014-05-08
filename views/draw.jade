@@ -26,10 +26,9 @@ block content
                   form(action = "/users/" + user.id + "/shapes/create", method = "post")
                     input(type="hidden", id="info", name='info')
                     input(type="submit", id='save-btn', value='    ')
-                li(id='library') 
-                  form(action = "/users/" + user.id + "/shapes")
-                    input(type="hidden")
-                    input(type="submit", id='library-btn', value='    ')
+                li: a(id='library', href='#')
+                  img(src='images/tools/library-icon.png', height="20px", width="20px")
+                  
 
     div(id='main')
       div(class="footer l-box is-center")
@@ -47,8 +46,8 @@ block content
           a(class="pure-menu-heading", href='#') Shape Library
           ul(id='library-list')
             each shape in shapes
-              li 
-                canvas(height="200px", width="200px", id="c"+ shape.dataValues.id) 
+              li
+                a: canvas(height="200px", width="200px", id="c"+ shape.dataValues.id, class="library-canvas") 
 
 
   script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")

@@ -1,62 +1,152 @@
 body
   background: #F38630
-  overflow-y:hidden
+  overflow-x: hidden
+
+
+h2,
+h3,
+h4
+  letter-spacing: 0.15em
+  text-transform:uppercase
+  text-align: left
 
 h1
-  text-transform: uppercase
-  letter-spacing: 0.19em
-  font-size: 48px
-  font-weight: lighter
+  font-size: 200%
+  letter-spacing: 0.2em
+  text-transform:uppercase
+  text-align: left
 
 .content-container
-  position: absolute
   background: #E0E4CC
-  position: absolute
-  top: 13%
-  width:100%
-  height: 72%
+  z-index: 1
+  overflow: hidden
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  position: fixed !important
   margin-top: 0px
   box-shadow: 0px 0px 25px 20px rgba(124,128,104,0.2);
 
 
-.logo
+.content
+  background: rgba(255, 255, 255, 0.3)
+  margin-left:auto
+  margin-right:auto
+  width: 50%
+  height: 100%
+
+.logo-img
+  padding: 0 0 0 5.5em
+  margin-left:auto
+  margin-right:auto
+
+.schapd
   position: absolute
-  top:5px
-  left:0px
+  top: 30%
+  left: 35%
+
+.block
+  position: absolute
+  top: 50%
+  left: 30%
+  width: 37%
+  font-size: 12px
+  text-align: right !important
+
+.block h1
+  text-align: right !important  
+
+
+
+.pure-button a:hover
+.pure-button a:focus
+  background: #000 !important
+  background-image: none !important
+  filter: none !important
+
+
+
+.main-content
+  position: absolute
+  top: 100%
   width: 100%
-  line-height:60px
-  background: rgba(236,229,206, 0.9)
-  overflow: hidden
-  padding-left: 2em
+  min-height: 12%
+  z-index: 3
+  background: #F9CDAD
 
-.logo img
-  height: 50
-  width: 50
-  padding-top: 2.2em
+#Schāpd-basics
+  height: 45em
+  padding-top: 4em
 
+#Schāpd-Technologies
+  height: 45em
+  background: #FCF8C2
+  padding-top: 4em
 
+#Schāpd-goals
+  height: 45em
+  background: #D4E8C1
+  padding-top: 4em
 
-.footer 
-  background: #C5E0DC
-  position: absolute
+#Schāpd-influences
+  height: 45em
+  background: #DACCB3
+  padding-top: 4em
+
+#Schāpd-itself
+  height: 45em
+  background: #E79498
+  padding-top: 4em
+
+#Schāpd-Challenges
+  height: 45em
+  background: #559589
+  padding-top: 4em
+
+#Schāpd-Follow
+  height: 45em
+  background: #EFBA6B
+  padding-top: 4em
+
+#Schāpd-Questions
+  height: 45em
+  background: #ED9050
+  padding-top: 4em
+
+#punch
+  position: fixed
   top: 90%
-  text-align: center
-  width: 100%
-  bottom:0
+  left: 94%
+ 
+  
 
-.footer-links
-  padding: 0.2em
-  text-align: center
-  z-index: 6
-  bottom: 0
-  background: none !important
+#abst
+  display: block
+  vertical-align: middle
+
+dt
+  font-weight: bold
+
+
+.para
+  padding: 1em
+
+.tech-menu 
+  width: 295px !important
+
+.pure-menu a 
   border: none !important
-  text-transform:uppercase
-  letter-spacing: 0.16em !important
+  padding:  0em 0em 0.6em 0em
 
+.tech-menu, 
+.tech-menu ul
+  border: none !important
+  background: transparent !important
 
-.footer-links li a:hover,
-.footer-links li a:focus 
-  border: none
-  background: rgba(255,255,255,0.17)
-  radius: 5px
+.tech-menu, .pure-menu-heading 
+  color: #fff
+  margin: 0
+  border: none !important
+  background: #E0E4CC
+

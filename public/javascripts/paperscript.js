@@ -32,6 +32,14 @@ var clearSelection = function(){
   }
 }
 
+var assignedToCB = function(listId, data){
+  return function(info){
+    console.log(listId);
+    console.log(data);
+    paper.projects[0].activate();
+    paper.project.activeLayer.importJSON(data);
+  }
+}
 
 
 
@@ -280,15 +288,22 @@ Tools.prototype.useTool = function(type){
   }
 });
 
+ 
  $(window).ready(function(e){
   for(var i = 0; i < sData.length; i++){
     var id = "c"+ sData[i].id;
-    var pr = new Project(id)
+    var listId = "#c"+ sData[i].id;
+    var dataah = sData[i].info;
+    var pr = new Project(id);
     pr.activate();
     paper.project.activeLayer.importJSON(sData[i].info);
-    paper.project.activeLayer.children[0].scale(0.5)
-    paper.project.activeLayer.children[0].position.x=50;
-    paper.project.activeLayer.children[0].position.y=50;
+    paper.project.activeLayer.children[0].selected = false;
+    paper.project.activeLayer.children[0].scale(0.5);
+    paper.project.activeLayer.children[0].position.x=100;
+    paper.project.activeLayer.children[0].position.y=100;
+    console.log(listId);
+    console.log(dataah)
+    $(listId).click(assignedToCB(listId, dataah));
   }
   paper.projects[0].activate();
  })

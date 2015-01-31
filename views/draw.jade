@@ -40,6 +40,26 @@ block content
             li: a(href="/feedback") Feedback
 
       div(class='content')
+        div(id="tutorial")
+          div(class="pure-g", id='tool-top')
+            div(class='pure-u-11-12')
+              h3 Schāpd Tutorial!
+            div(class='pure-u-1-24') 
+              a(href='#', class="pure-button", id='close-tut') x
+          div(id='name-area')
+            h4(id='toolName')
+          div(class='pure-g', id="tool-content")
+            div(class='pure-u-1-4', id='tut-left')
+              p ⬤
+            div(class='pure-u-1-4')
+              img(id='toolPhoto', height="150px", width="150px")
+            div(class='pure-u-1-4')
+              p(id='toolDescription')
+            div(class='pure-u-1-4', id='tut-right')
+              p ⬤
+
+
+
         canvas(id='myCanvas', resize="true")
       div(id='library-container')
         div(class="pure-menu pure-menu-open")
@@ -53,3 +73,5 @@ block content
   script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")
 
   script(type="text/paperscript", src="/javascripts/paperscript.js", canvas="myCanvas")
+
+  script(src="/javascripts/tutorial.js")

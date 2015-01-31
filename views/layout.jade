@@ -1,47 +1,50 @@
 hdoctype html
-html
+html(lang="en")
   head
     title= title
     link(rel='stylesheet', href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css")
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
     script(src='//code.jquery.com/jquery-1.10.2.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     link(rel='stylesheet', href='/stylesheets/header.css')
 
+body 
+  if(user)
+    div(class="navbar navbar-fixed-top alt", data-spy="affix" data-offset-top=".navbar-collapse")
+      div(class="container")
+        div(class="navbar-header")
+          a(href="#", class="navbar-brand")
+            img(src='/images/schapd-logo.png', height="30px", width ="100")
+          a(class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+        div(class="navbar-collapse collapse", id="navbar") 
+          ul(class="nav navbar-nav")
+            li: a(href="/") HOME
+            li: a(href="/about") ABOUT
+            li: a(href="/draw") DRAW
+            li(class="pull-right"): img(id="userPicture", src= "http://graph.facebook.com/" + user.username + "/picture")
+            li(class="pull-right", id="firstname")
+            li: a(class="pull-right", href="/logout") SIGN OUT
+  else
+    div(class="navbar navbar-fixed-top alt", data-spy="affix" data-offset-top=".navbar-collapse")
+      div(class="container")
+        div(class="navbar-header")
+          a(href="#", class="navbar-brand")
+            img(src='/images/schapd-logo.png', height="30px", width ="100")
+          a(class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+        div(class="navbar-collapse collapse", id="navbar") 
+          ul(class="nav navbar-nav")
+            li: a(href="/") HOME
+            li: a(href="/about") ABOUT
+            li: a(href="/drawtry") Try
+            li(class="pull-right"): a(href="/login") SIGN IN
 
- 
-  body
-  div(class='header')
-    if(user)
-      div(class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed ")
-        a(class="pure-menu-heading", href="/"): img(src='/images/schapd-logo.png', height="30px", width ="100px")
-        ul
-          li: a(href="/") HOME
-          li: a(href="/about") ABOUT
-          li: a(href="/draw") DRAW
-        ul(id="right-links")
-          li: img(id="userPicture", src= "http://graph.facebook.com/" + user.username + "/picture")
-          li(id="firstname")
-          li: a(href="/logout") SIGN OUT
-
-    else
-      div(class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed ")
-        a(class="pure-menu-heading", href="/"): img(src='/images/schapd-logo.png', height="30px", width ="100")
-        ul
-          li: a(href="/") HOME
-          li: a(href="/about") ABOUT
-          li: a(href="/drawtry") TRY
-        ul(id="right-links")
-          li: a(href="/login") SIGN IN
-
-    script(type='text/javascript').
-      var localData = !{JSON.stringify(user)}
-      console.log(localData)
-      if(localData != null){
-        console.log(localData.displayName)
-        $("#firstname").text("" +localData.displayName+ "")
-      }
-      var sData = !{JSON.stringify(shapes)} 
-      console.log(sData)
-
-    block content
+  block content
 
 

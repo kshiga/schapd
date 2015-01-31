@@ -1,99 +1,59 @@
 extends layout 
 
 block content
-  link(rel='stylesheet', href='/stylesheets/home.css')
-
-
-  div(class="splash-container")
-      div(class="splash")
-          h1(class="splash-head"): img(src="/images/schapd-logo.png", height="200", width="636")
-          div(class="pure-g splash-subhead")
-            div(class='pure-2-3')
-              p(class="splash-subhead"): h3 Creativity for all.
-            div(class='pure-1-3')
-              p(class="splash-subhead "): a(href="/drawtry", class="pure-button pure-button-primary") Try it out
-          
-  div(class="content-wrapper")
-      div(class="content")
-          h2(class="content-head is-center") ● What is Schāpd? ●
-
-          div(class="pure-g")
-            div(class="l-box  pure-u-1-5")
-                h3(class="content-subhead") ▴ The Motivation.
-                p. 
-                  For every art class that ever said you weren't creative 
-                  because you couldn't draw a perfect circle or whatever, 
-                  Schāpd is here. Schāpd aims to help everyone explore their
-                  creativity, because everyone is creative.
-            div(class="l-box  pure-u-1-5")
-              img(src='images/creativity.png', width="150px", height='180px', class='photo')
-            div(class="l-box  pure-u-1-4")
-                h3(class="content-subhead") ▴ The Concept.
-                p.
-                  In Schāpd, all illustration is shape based. (Hence "schāpd")
-                  Using only two basic shapes and a few different methods 
-                  for combining them, Schāpd looks to redesign your outlook
-                  on illustration.  Line art is a thing of the past.  
-            div(class="l-box  pure-u-1-5")
-              img(src='images/shapes.png', width="300px", height='200px', class='photo')
-
-      div(class="ribbon l-box-lrg pure-g")
-        div(class="l-box-lrg is-center pure-u-1-5 ")
-          img(src='images/logo.png')
-        div(class="pure-u-1 pure-u-3-5")
-          a(href="https://github.com/kshiga/schapd"): img(style="position: absolute; top: 29.5%; right: 0; border: 0;", src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67", alt="Fork me on GitHub", data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png")
-          h2(class="content-head content-head-ribbon") The Project
-
+  script(src='javascripts/home.js')
+  div(class="header alt vert" id="header-container")
+    div(class="container")
+      img(src="/images/schapd-logo.png", height="200", width="636")
+      h3 crativity for all.
+      a(href="/drawtry", class="btn btn-default btn-lg") try schāpd
+  div(id="sec1", class="blurb")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 ● What is Schāpd? ●
+        div(class="col-md-6")
+          div(class="col-sm-6")
+            h3 ▴ The Motivation.
+            p.
+              For every art class that ever said you weren't creative 
+              because you couldn't draw a perfect circle or whatever, 
+              Schāpd is here. Schāpd aims to help everyone explore their
+              creativity, because everyone is creative.
+          div(class="col-sm-6"): img(src='images/creativity.png', width="150px", height='180px', class='photo')
+        div(class="col-md-6")
+          div(class="col-sm-6")
+            h3 ▴ The Concept.
+            p.
+              In Schāpd, all illustration is shape based. (Hence "schāpd")
+              Using only two basic shapes and a few different methods 
+              for combining them, Schāpd looks to redesign your outlook
+              on illustration.  Line art is a thing of the past.
+          div(class="col-sm-6"): img(src='images/shapes.png', width="300px", height='200px', class='photo')
+  div(id="sec2", class="blurb bright")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 The Project
+        div(class="col-xs-3"): img(src='images/logo.png')
+        div(class="col-xs-9")
           p.
             Schāpd is a CMSI402 Senior Project completed by Kaitlyn Higa
             during the Spring 2014 semester. 
           p.
             You can fork the project on github and learn more about it here or on the wiki.
-
-      div(class="content more")
-          h2(class="content-head is-center ") Cool, tell me more
-
-          div(class="pure-g")
-              div(class="l-box-lrg pure-u-1-4")
-                  form(class="pure-form pure-form-stacked")
-                    p Sign up for email updates!
-                      fieldset
-
-                          label(for="email") Your Name
-                          input(id="email", type="text", placeholder="Your Name")
-
-
-                          label(for="email") Your Email
-                          input(id="email", type="email", placeholder="Your Email")
-
-                          label(for="password") Your Password
-                          nput(id="password", type="password", placeholder="Your Password")
-
-                          button(type="submit", class="pure-button") Sign Up
-
-              div(class="l-box-lrg pure-u-2-5")
-                  h4 Contact Us
-                  p Now why would you want to do that?
-
-
-                  h4 More Information
-                  p Yes, that would be nice
-                      
-
-      div(class="footer l-box is-center")
-        div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
-          ul
-            li: a(href="/about") About
-            li: a(href="https://github.com/kshiga/schapd") Git
-            li: a(href="/privacy") Privacy
-            li: a(href="/feedback") Feedback
-
-
-  script(src="http://yui.yahooapis.com/3.14.1/build/yui/yui.js")
-  script(type='text/javascript').
-    YUI().use('node-base', 'node-event-delegate', function (Y) {
-      Y.one('body').delegate('click', function (e) {
-          e.preventDefault();
-      }, 'a[href="#"]');
-    });
-
+ 
+  
+  footer
+    div(class="container")
+      div(class="row")
+        div(class="col-md-6 col-md-offset-3 text-center")
+          p.
+            Kaitlyn Higa 
+            2014 - 2015
+          hr
+          ul(class="list-inline")
+            li: a(href="/about"): i(class="fa fa-info-circle fa-3x")
+            li: a(href="https://github.com/kshiga/schapd"): i(class="fa fa-github fa-3x")
+  ul(class="nav pull-right scroll-down")
+    li: a(href="#", title="Scroll to top") ▲

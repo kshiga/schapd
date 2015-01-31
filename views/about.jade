@@ -2,27 +2,21 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/about.css')
-  script(src='javascripts/about.js')
-  div(class="content-container")
-    div(class="content")
-      div(class='schapd' id='slide1')
-        img(src='images/schapd-logo.png', height="150", width="477")
-      div(class='block')
-        h1 Kaitlyn Higa
-        h1 8 May 2014
+  div(class="header alt vert")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-8 col-md-offset-2 ")
+          img(src='images/schapd-logo.png', height="150", width="477")
+          h3(class="text-right") Kaitlyn Higa
+          h3(class="text-right") 8 May 2014
 
-  div(class='main-content')
-
-    img(src='images/logo.png', height="50", width="50", id='punch')
-    div(id='Schāpd-basics')
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-          img(src='images/logo.png', height="75", width="75", class='logo-img')
-        div(class='pure-u-6-8')
-        h1 Project Description
-      div(class='pure-g')
-        div(class='pure-u-1-2 para')
-          h4 What is Schāpd?
+  div(class="blurb", id="Schāpd-basics")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 Project Description
+        div(class="col-sm-6")
+          h4 What is Schāpd? 
           p  Schāpd /SHāpd/ is a simple, browser based graphic designing program 
            | based around the idea that everything can be illustrated with shapes.
            | Unlike other methods of "shape" drawing, Schāpd aims to foster an entirely
@@ -37,118 +31,107 @@ block content
            | can create more shapes by using the different three shape interaction functions:
            | joining, subtracting, and dividing.  With these simple tools, any shape can be 
            | manufactured.  The Artist's account is able to retrieve previously stored shapes, 
-           | and, in that spirit, the artist can save shapes to his or her account. 
-        div(class='pure-u-1-4', class='logo-img')
+           | and, in that spirit, the artist can save shapes to his or her account.
+        div(class="col-sm-6")
           img(src='images/logo.png', height="350", width="350")
 
-          
+  div(class="blurb", id="Schāpd-Technologies")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 Schāpd Technologies
+        div(class="col-md-4")  
+          table(class="table")
+            thead: tr: th Programming + Markup Languages
+            tbody
+              tr: td: a(href="https://developer.mozilla.org/en-US/docs/Web/JavaScript") JavaScript
+              tr: td: a(href="http://www.w3.org/html/") HTML
+              tr: td: a(href="http://www.w3.org/Style/CSS/Overview.en.html") CSS
+              tr: td: a(href="http://docs.oracle.com/cd/B28359_01/server.111/b28286/toc.htm") SQL
+          table(class="table")
+            thead: tr: th Libraries + Frameworks
+            tbody
+              tr: td: a(href="http://purecss.io/"): s Pure CSS
+              tr: td: a(href="http://getbootstrap.com") Twitter Bootstrap
+              tr: td: a(href="http://paperjs.org/") Paper.js
+              tr: td: a(href="http://jquery.com/") jQuery
+          table(class="table")
+            thead: tr: th Database
+            tbody
+              tr: td: a(href="http://www.postgresql.org/") PostgreSQL
+          table(class="table")
+            thead: tr: th Hosting
+            tbody
+              tr: td: a(href="https://www.heroku.com/") Heroku
+        div(class="col-md-4")
+          table(class="table")
+            thead: tr: th Platform
+            tbody
+              tr: td: a(href="http://nodejs.org/e") nodejs
+          table(class="table")
+            thead: tr: th Node Packages
+            tbody
+              tr: td: a(href="http://sequelizejs.com/") Sequelize
+              tr: td: a(href="http://passportjs.org/") Passport
+              tr: td: a(href="http://visionmedia.github.io/mocha/") Mocha
+              tr: td: a(href="http://chaijs.com/") Chai
+              tr: td: a(href="http://jade-lang.com/") Jade
+              tr: td: a(href="http://learnboost.github.io/stylus/") Stylus
+              tr: td: a(href="https://github.com/brianc/node-postgres") pg
+              tr: td: a(href="http://expressjs.com/") Express
+        div(class="col-md-4")
+          table(class="table")
+            thead: tr: th Programs
+            tbody
+              tr: td: a(href="http://www.sublimetext.com/3") Sublime Text 3
+              tr: td: a(href="http://www.google.com/chrome") Google Chrome
+              tr: td: a(href="http://www.schapd.me") Schāpd
+              tr: td: a(href="http://helpx.adobe.com/photoshop/topics-cs6.html") Adobe Photoshop CS6
+              tr: td: a(href="http://helpx.adobe.com/illustrator/topics-cs6.html") Adobe Illustrator CS6
+          table(class="table")
+            thead: tr: th Operating System
+            tbody
+              tr: td: a(href="https://www.apple.com/osx/") MacOSX 10.9.2
 
-    div(id='Schāpd-Technologies')
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-          img(src='images/logo.png', height="75", width="75", class='logo-img')
-        div(class='pure-u-6-8')
-        h1 Schāpd Technologies
-      div(class='pure-g') 
-        div(class='pure-u-1-8')
-        div(class='pure-u-1-4')
-          h4 Programming/Markup 
-          h4 Languages
-          div(class='pure-menu pure-menu-open', id="tech-menu-a")
-            a(class='pure-menu-heading') Programming/MarkupLanguages
-            ul
-              li: a(href="https://developer.mozilla.org/en-US/docs/Web/JavaScript") JavaScript
-              li: a(href="http://www.w3.org/html/") HTML
-              li: a(href="http://www.w3.org/Style/CSS/Overview.en.html") CSS
-              li: a(href="http://docs.oracle.com/cd/B28359_01/server.111/b28286/toc.htm") SQL
-
-              li(class='pure-menu-heading') Libraries
-              li: a(href="http://purecss.io/") Pure CSS
-              li: a(href="http://paperjs.org/") Paper.js
-              li: a(href="http://jquery.com/") jQuery
-              li(class='pure-menu-heading') Database
-              li: a(href="http://www.postgresql.org/") PostgreSQL
-              li(class='pure-menu-heading') Hosting
-              li: a(href="https://www.heroku.com/") Heroku
-
-        div(class='pure-u-1-4')
-          h4 Platform and Packages
-          div(class='pure-menu pure-menu-open', id="tech-menu-b")
-              a(class='pure-menu-heading') Platform
-              ul
-                li: a(href="http://nodejs.org/e") nodejs
-                li(class='pure-menu-heading') Node Packages
-                li: a(href="http://sequelizejs.com/") Sequelize
-                li: a(href="http://passportjs.org/") Passport
-                li: a(href="http://visionmedia.github.io/mocha/") Mocha
-                li: a(href="http://chaijs.com/") Chai
-                li: a(href="http://jade-lang.com/") Jade
-                li: a(href="http://learnboost.github.io/stylus/") Stylus
-                li: a(href="https://github.com/brianc/node-postgres") pg
-                li: a(href="http://expressjs.com/") Express
-        div(class='pure-u-1-4')
-          h4 Developer Tools
-          div(class='pure-menu pure-menu-open', id="tech-menu-c")
-            a(class='pure-menu-heading') Programs
-            ul
-              li: a(href="http://www.sublimetext.com/3") Sublime Text 3
-              li: a(href="http://www.google.com/chrome") Google Chrome
-              li: a(href="http://www.schapd.me") Schāpd
-              li: a(href="http://helpx.adobe.com/photoshop/topics-cs6.html") Adobe Photoshop CS6
-              li: a(href="http://helpx.adobe.com/illustrator/topics-cs6.html") Adobe Illustrator CS6
-              li(class='pure-menu-heading') Operating System
-              li: a(href="https://www.apple.com/osx/") MacOSX 10.9.2
-
-    div(id='Schāpd-goals')
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-          img(src='images/logo.png', height="75", width="75", class='logo-img')
-        div(class='pure-u-6-8')
-        h1 Project Goals
-      div(class='pure-g')
-        div(class='pure-u-1-24')
-        div(class='pure-u-1-2')
+  div(class="blurb", id="Schāpd-goals")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 Project Goals
+        div(class="col-md-8")
           h4 Goals for Schāpd
           dl
-            dt Show coding proficiency
+            dt ▴ Show coding proficiency
               dd The ultimate goal for Schāpd is to fulfill the requirements for 
                 | the CMSI 402: Senior Project Laboratory course, showcasing all 
                 | of the concepts I've learned and all of the knowledge I have aquired
                 | during the past four years in LMU's Computer Science program.
-            dt Incorporate Studio Arts minor
+            dt ▴ Incorporate Studio Arts minor
               dd Schāpd effectively combines my CS education with my passion for 
                 | art and creative expression through building a creativity fueled project.
-            dt Produce a product that empowers others 
+            dt ▴ Produce a product that empowers others 
               dd In keeping with the university's mission, Schāpd is a project 
                 | that hopes to echo the values of educating the whole person and
                 | the encouragement of growth. Schāpd was developed in hopes that 
                 | it would encourage users to grow their creative energies in a
                 | safe, non-judgemental space.  The environment that Schāpd provides 
                 | aims to also introduce a non-traditional art style. 
-            dt Challenge myself
+            dt ▴ Challenge myself
               dd In taking on this project, I had no idea what I was getting into.
                 | I really wanted to test myself and see if I had the ability to 
                 | learn about and implement several tools that I had never used before.
                 | (Definitely succeeded on this one.)
-        div(class='pure-u-1-4 logo-img')
+        div(class="col-md-4")
           img(src='images/creativity.png', width="400", height='480')
 
-        
-          
-
-    div(id='Schāpd-influences')
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-          img(src='images/logo.png', height="75", width="75", class='logo-img')
-        div(class='pure-u-6-8')
-        h1 Project Justification
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-        div(class='pure-u-1-3')    
+  div(class="blurb", id="Schāpd-influences")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 Project Justification
+        div(class="col-md-8")
           img(src='images/abstract.png', width='600', height='540', id='abst')
-
-        div(class='pure-u-1-8')
-        div(class='pure-u-1-3')
+        div(class="col-md-4")
           h4 Schāpd and Me
           ul
             li ART260: Computer Graphics
@@ -171,20 +154,17 @@ block content
             | behind what an "artist" wears or how an "artist" behaves. With Schāpd, creation 
             | is now free and open to everyone.
 
-    div(id='Schāpd-itself')
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-          img(src='images/logo.png', height="75", width="75", class='logo-img')
-        div(class='pure-u-6-8')
-        h1 Schāpd Interface
-      div(class='pure-g')
-        div(class='pure-u-3-8 logo-img')
+  div(class="blurb", id="Schāpd-itself")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 Schāpd Interface
+        div(class="col-md-7")
           br
           img(src='images/canvas.png', height="250", width="500")
           br
           img(src='images/shapes.png', height="336", width="500")
-        div(class='pure-u-1-3')
-
+        div(class="col-xs-4")
           h4 Drawing Functions
           dl
             dt Triangle
@@ -202,30 +182,27 @@ block content
               dd Once two shapes are selected, the shapes will be divided into three shapes,
                 | the two original shapes will have negative areas where they overlapped and
                 | a third shape where the overlap was.
-        div(class='pure-u-1-8')
+        div(class="col-xs-1")
           img(src='images/toolbar.png', height="500", width="61", class='logo-img')
 
-    div(id='Schāpd-Challenges')
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-          img(src='images/logo.png', height="75", width="75", class='logo-img')
-        div(class='pure-u-6-8')
-        h1 Schāpd's Challenges
-      div(class='pure-g')
-        div(class='pure-u-1-8')
-        div(class='pure-u-1-4')
+  div(class="blurb", id="Schāpd-Challenges")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 Schāpd's Challenges
+        div(class="col-md-4")
           h4 Time Management
           p Besides the full time student thing, and the senior, Computer Science thing,
             | I partipate in lots of other things...
           img(src='images/clock.png', height='283', width='250')
-        div(class='pure-u-1-4')
+        div(class="col-md-4")
           h4 Proper Research
           p Half of the work that I did, mainly the developing the shape calculations from first
             | principles took up the majority of my time, and I eventually found a beautiful
             | library with much more elegant solutions than my hacky code.  Unfortunately, I
             | discovered this about two and a half months into the project.
           img(src='images/research.png', height='280', width='280')
-        div(class='pure-u-1-4')
+        div(class="col-md-4")
           h4 Technology Conflicts
           p Also due to my lack of research, I spent a good amount of time undoing the work
             | that I had previously done.  Many of the technologies I had originally intended 
@@ -233,52 +210,39 @@ block content
             | from the start and later discovered they only provide database support for MongoDB
             | I also toyed with adding a mySQL database as well before returning to PostgreSQL.
           img(src='images/conflict.png', height='280', width='280')
-    div(id='Schāpd-Follow')
-        div(class='pure-g')
-          div(class='pure-u-1-8')
-            img(src='images/logo.png', height="75", width="75", class='logo-img')
-          div(class='pure-u-6-8')
-          h1 What's to come
-        div(class='pure-g')
-          div(class='pure-u-1-8')
-          div(class='pure-u-1-3')
-            h4 Sharing is caring
-            p I really hope to, in the near future, implement shape sharing shape information
-              | in between friends.  This would encourage even more creative growth and make the
-              | app more social.  In the road ahead, I hope to be able to implement a collaborative
-              | mode, similar to Google Docs where several people can work on a single canvas at the
-              | same time. 
-            h4 Tutorials
-            p Truly my biggest regret, I really wish that I had time to make tutorials on how to
-              | get started thinking with shapes.  Although creation becomes so easy after training,
-              | like many other non-traditional practices, getting started is the most difficult step.
-          div(class='pure-u-1-3')
-            img(src='images/arrow.png')
-            
 
-    div(id='Schāpd-Questions')
-        div(class='pure-g')
-          div(class='pure-u-1-8')
-            img(src='images/logo.png', height="75", width="75", class='logo-img')
-          div(class='pure-u-6-8')
-          h1 Questions? Comments? Concerns? 
-        div(class='pure-g')
-          div(class='pure-u-1-8')
+  div(class="blurb", id="Schāpd-Follow")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h2 What's to come
+        div(class="col-md-3")
+          h4 Sharing is caring
+          p I really hope to, in the near future, implement shape sharing shape information
+            | in between friends.  This would encourage even more creative growth and make the
+            | app more social.  In the road ahead, I hope to be able to implement a collaborative
+            | mode, similar to Google Docs where several people can work on a single canvas at the
+            | same time. 
+          h4 Tutorials
+          p Truly my biggest regret, I really wish that I had time to make tutorials on how to
+            | get started thinking with shapes.  Although creation becomes so easy after training,
+            | like many other non-traditional practices, getting started is the most difficult step.
+        div(class="hidden-xs col-md-9")
+          img(src='images/arrow.png')
+
+  div(class="blurb", id="Schāpd-Questions")
+    div(class="container")
+      div(class="row")
+        div(class="col-md-12")
+          h1 Questions? Comments? Concerns?
+        div(class="col-md-5")
           img(src='images/logo.png', height="450", width="450") 
-          div(class='pure-u-1-8')
-          div(class='pure-u-1-4')
-            h4 A big, fatty thank you to:
-            ul
-              li The two very understanding people who make up my parents
-              li LMU CS Class of 2014! 
-              li Professor BJ Johnson - our fearless 402 leader
-              li All of the LMU CS Faculty for being da best
+        div(class="col-md-7")
+          h4 A big, fatty thank you to:
+          ul
+            li The two very understanding people who make up my parents
+            li LMU CS Class of 2014! 
+            li Professor BJ Johnson - our fearless 402 leader
+            li All of the LMU CS Faculty for being da best
 
-            h4 References and Links
-            ul
-              li: a(href="http://purecss.io/layouts/") Pure CSS Layout Samplings
-              li Color Palettes
-                 | &nbsp;
-                 a(href="http://www.colourlovers.com/palette/92095/Giant_Goldfish") 1
-                 | &nbsp;
-                 a(href="http://www.colourlovers.com/palette/629637/(%E2%97%95%E3%80%9D%E2%97%95)") 2
+  

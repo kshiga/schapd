@@ -10,7 +10,7 @@ var path = require('path');
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:3000/users'
 var passport = require('passport');
-var flash = require('connect-flash');
+//var flash = require('connect-flash');
 var db = require('./models');
 var sequelize = require('sequelize');
 var LocalStrategy = require('passport-local').Strategy;
@@ -43,7 +43,7 @@ var FACEBOOK_APP_SECRET = 'd4ee4f232ba115d7b571871869107462';
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: 'http://schapd.herokuapp.com/auth/facebook/callback'
+  callbackURL: 'http://localhost:3000/auth/facebook/callback' || 'http://schapd.herokuapp.com/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
     db.User.findOrCreate({id: profile.id}, 
@@ -65,7 +65,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 app.use(express.bodyParser())
-app.use(flash());
+//app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);

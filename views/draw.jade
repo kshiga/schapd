@@ -6,72 +6,32 @@ block content
 
   div(id='layout')
     div(id='menu')
-        div(class='pure-menu pure-menu-open')
-            ul
-                li: a(id='triangle', href="#")
-                  img(src='images/tools/triangle-icon.png', height="20px", width="20px")
-                li: a(id='circle', href="#") 
-                  img(src='images/tools/circle-icon.png', height="20px", width="20px")
-                li: a(id='select', href='#')
-                  img(src='images/tools/select.png', height="20px", width="20px")
-                li: a(id='join', href='#') 
-                  img(src='images/tools/join-icon.png', height="20px", width="20px")
-                li: a(id='subtract', href='#')
-                  img(src='images/tools/subtract-icon.png', height="20px", width="20px")
-                li: a(id='divide', href='#')
-                  img(src='images/tools/divide-icon.png', height="20px", width="20px")
-                li: a(id='export', href='#')
-                  img(src='images/tools/export-icon.png', height="20px", width="20px")
-                li(id='save' class='menu-item-divided')
-                  form(action = "/users/" + user.id + "/shapes/create", method = "post")
-                    input(type="hidden", id="info", name='info')
-                    input(type="submit", id='save-btn', value='    ')
-                li: a(id='library', href='#')
-                  img(src='images/tools/library-icon.png', height="20px", width="20px")
-                  
+        div(class="list-group")
+          a(id='selectTool', class="list-group-item active schapd-tool")
+            img(src='images/tools/select.png', height="20px", width="20px")
+          a(id='triangleTool', class="list-group-item schapd-tool")
+            img(src='images/tools/triangle-icon.png', height="20px", width="20px")
+          a(id='circleTool', class="list-group-item schapd-tool") 
+            img(src='images/tools/circle-icon.png', height="20px", width="20px")
+          a(id='join', class="list-group-item schapd-manipulate") 
+            img(src='images/tools/join-icon.png', height="20px", width="20px")
+          a(id='subtract', class="list-group-item schapd-manipulate")
+            img(src='images/tools/subtract-icon.png', height="20px", width="20px")
+          a(id='divide', class="list-group-item schapd-manipulate")
+            img(src='images/tools/divide-icon.png', height="20px", width="20px")
+          a(id='export', class="list-group-item schapd-export")
+            img(src='images/tools/export-icon.png', height="20px", width="20px")
+          a(id='library', class="list-group-item schapd-export")
+            img(src='images/tools/library-icon.png', height="20px", width="20px")
 
-    div(id='main')
-      div(class="footer l-box is-center")
-        div(class='pure-menu pure-menu-horizontal pure-menu-open footer-links')
-          ul
-            li: a(href="/about") About
-            li: a(href="https://github.com/kshiga/schapd") Git
-            li: a(href="/privacy") Privacy
-            li: a(href="/feedback") Feedback
+ 
 
-      div(class='content')
-        div(id="tutorial")
-          div(class="pure-g", id='tool-top')
-            div(class='pure-u-11-12')
-              h3 Schāpd Tutorial!
-            div(class='pure-u-1-24') 
-              a(href='#', class="pure-button", id='close-tut') x
-          div(id='name-area')
-            h4(id='toolName')
-          div(class='pure-g', id="tool-content")
-            div(class='pure-u-1-4', id='tut-left')
-              p ⬤
-            div(class='pure-u-1-4')
-              img(id='toolPhoto', height="150px", width="150px")
-            div(class='pure-u-1-4')
-              p(id='toolDescription')
-            div(class='pure-u-1-4', id='tut-right')
-              p ⬤
+      canvas(id='schapdcanvas', resize="true")
+      
 
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.21/paper-full.js")
 
-
-        canvas(id='myCanvas', resize="true")
-      div(id='library-container')
-        div(class="pure-menu pure-menu-open")
-          a(class="pure-menu-heading", href='#') Shape Library
-          ul(id='library-list')
-            each shape in shapes
-              li
-                a: canvas(height="200px", width="200px", id="c"+ shape.dataValues.id, class="library-canvas") 
-
-
-  script(src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.12/paper.js")
-
-  script(type="text/paperscript", src="/javascripts/paperscript.js", canvas="myCanvas")
+  
+  script(type="text/paperscript", src="/javascripts/shape.js", canvas="schapdcanvas")
 
   script(src="/javascripts/tutorial.js")

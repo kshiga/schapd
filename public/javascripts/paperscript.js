@@ -34,8 +34,8 @@ var clearSelection = function(){
 
 var assignedToCB = function(listId, data){
   return function(info){
-    console.log(listId);
-    console.log(data);
+    //console.log(listId);
+    //console.log(data);
     paper.projects[0].activate();
     paper.project.activeLayer.importJSON(data);
     paper.tools[2].activate();
@@ -52,11 +52,11 @@ var Tools = function(thisCanvas){
   this.triangleTool = new paper.Tool();
   this.triangleTool.onMouseDown = function(event){
     if(thisCanvas.h1 != null){
-      console.log("clearing 1st selection");
+      //console.log("clearing 1st selection");
       thisCanvas.h1.item.selected = false;
     }
     if(thisCanvas.h2 != null){
-      console.log("clearing 1st & 2nd selection");
+      //console.log("clearing 1st & 2nd selection");
       thisCanvas.h1 = null;
       thisCanvas.h2.item.selected = false;
       thisCanvas.h2 = null;
@@ -77,7 +77,7 @@ var Tools = function(thisCanvas){
   this.circleTool = new paper.Tool();
   this.circleTool.onMouseUp = function(event){
     if(thisCanvas.h1 != null){
-      console.log("clearing 1st selection");
+      //console.log("clearing 1st selection");
       thisCanvas.h1.item.selected = false;
     }
     if(thisCanvas.h2 != null){
@@ -291,21 +291,21 @@ Tools.prototype.useTool = function(type){
 
  
  $(window).ready(function(e){
-  for(var i = 0; i < sData.length; i++){
-    var id = "c"+ sData[i].id;
-    var listId = "#c"+ sData[i].id;
-    var dataah = sData[i].info;
-    var pr = new Project(id);
-    pr.activate();
-    paper.project.activeLayer.importJSON(sData[i].info);
-    paper.project.activeLayer.children[0].selected = false;
-    paper.project.activeLayer.children[0].scale(0.5);
-    paper.project.activeLayer.children[0].position.x=100;
-    paper.project.activeLayer.children[0].position.y=100;
-    console.log(listId);
-    console.log(dataah)
-    $(listId).click(assignedToCB(listId, dataah));
-  }
+  // for(var i = 0; i < sData.length; i++){
+  //   var id = "c"+ sData[i].id;
+  //   var listId = "#c"+ sData[i].id;
+  //   var dataah = sData[i].info;
+  //   var pr = new Project(id);
+  //   pr.activate();
+  //   paper.project.activeLayer.importJSON(sData[i].info);
+  //   paper.project.activeLayer.children[0].selected = false;
+  //   paper.project.activeLayer.children[0].scale(0.5);
+  //   paper.project.activeLayer.children[0].position.x=100;
+  //   paper.project.activeLayer.children[0].position.y=100;
+  //   console.log(listId);
+  //   console.log(dataah)
+  //   $(listId).click(assignedToCB(listId, dataah));
+  // }
   paper.projects[0].activate();
  })
   

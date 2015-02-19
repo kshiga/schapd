@@ -46,11 +46,10 @@ passport.use(new FacebookStrategy({
   callbackURL: 'http://localhost:3000/auth/facebook/callback' || 'http://schapd.herokuapp.com/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
-    db.User.findOrCreate({id: profile.id}, 
-      {firstname: profile.name.givenName}, 
-      {lastname: profile.name.familyName}, 
-      {picture: profile.profileURL}).success(function(){
-        
+    db.User.findOrCreate({id: profile.id}).spread(function(instance, created){
+        instance.update({firstname: profile.name.givenName}, 
+                        {lastname: profile.name.familyName}, 
+                        {picture: profile.profileURL});
         done(null, profile);
      });
   });
